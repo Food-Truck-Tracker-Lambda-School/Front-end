@@ -20,7 +20,7 @@ const Registration = () => {
     phoneNumber: "",
     username: "",
     password: "",
-    passwordConfirm: "",
+    
     terms: false,
   });
   //button state
@@ -34,7 +34,7 @@ const Registration = () => {
     phoneNumber: "",
     username: "",
     password: "",
-    passwordConfirm: "",
+    
     terms: "",
   });
 
@@ -60,11 +60,9 @@ const Registration = () => {
       .string()
       .required("Password is Required")
       .min(6, "Min 6 characters"),
-    passwordConfirm: yup
-      .string()
-      .oneOf([yup.ref("password"), null], "Passwords must Match"),
     terms: yup.boolean().oneOf([true], "Please agree to T&C's"),
   });
+
 
   useEffect(() => {
     schema.isValid(formState).then((val) => {
@@ -112,7 +110,7 @@ const Registration = () => {
           phoneNumber: "",
           username: "",
           password: "",
-          passwordConfirm: "",
+          
           terms: false,
         });
       })
@@ -120,7 +118,7 @@ const Registration = () => {
   };
 
   return (
-    <div>
+    
       <FormDiv onSubmit={onSubmit}>
         <label htmlFor="roleId">
           
@@ -221,21 +219,7 @@ const Registration = () => {
           ) : null}
         </label>
         <br></br>
-        <label htmlFor="passwordConfirm">
-          <input
-            id="passwordConfirm"
-            name="passwordConfirm"
-            data-cy="passwordConfirm"
-            type="password"
-            placeholder="re-enter password"
-            value={formState.passwordConfirm}
-            onChange={onChange}
-          />{" "}
-          Password Conformation
-          {errors.passwordConfirm.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.passwordConfirm}</ErrorP>
-          ) : null}
-        </label>
+       
         <br></br>
         <label htmlFor="terms">
           <input
@@ -252,11 +236,12 @@ const Registration = () => {
           ) : null}
         </label>
         <br></br>
-      </FormDiv>
-      <button type="submit" data-cy="submit" disabled={buttonOff}>
+        <button type="submit" data-cy="submit" disabled={buttonOff}>
         Register
       </button>
-    </div>
+      </FormDiv>
+      
+    
   );
 };
 
