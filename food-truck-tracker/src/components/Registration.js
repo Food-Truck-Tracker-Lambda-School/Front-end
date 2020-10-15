@@ -7,10 +7,18 @@ const ErrorP = styled.p`
   font-size: 1.2rem;
   color: red;
 `;
-const FormDiv = styled.form`
-  display: flex;
-  flex-direction: column;
+
+const RegDiv = styled.div`
+  width: 400px;
+  background: #6495ED;
+  color: white;
+  padding: 2%;
+  position: fixed;
+  margin: 2% 15% 15% 30%;
+  border-radius: 10px;
+  overflow: hidden;
 `;
+
 
 const Registration = () => {
   const [formState, setFormState] = useState({
@@ -20,7 +28,7 @@ const Registration = () => {
     phoneNumber: "",
     username: "",
     password: "",
-    
+
     terms: false,
   });
   //button state
@@ -34,7 +42,7 @@ const Registration = () => {
     phoneNumber: "",
     username: "",
     password: "",
-    
+
     terms: "",
   });
 
@@ -63,7 +71,6 @@ const Registration = () => {
     terms: yup.boolean().oneOf([true], "Please agree to T&C's"),
   });
 
-
   useEffect(() => {
     schema.isValid(formState).then((val) => {
       setButtonOff(!val);
@@ -81,7 +88,6 @@ const Registration = () => {
       })
       .catch((err) => {
         setErrors({ ...errors, [e.target.name]: err.errors[0] });
-        
       });
   };
 
@@ -110,7 +116,7 @@ const Registration = () => {
           phoneNumber: "",
           username: "",
           password: "",
-          
+
           terms: false,
         });
       })
@@ -118,130 +124,139 @@ const Registration = () => {
   };
 
   return (
-    
-      <FormDiv onSubmit={onSubmit}>
-        <label htmlFor="roleId">
-          
-          <select
-            id="roleId"
-            name="roleId"
-            data-cy="roleId"
-            value={formState.type}
-            onChange={onChange}
-          >
-            <option value="">---Choose One---</option>
-            <option value="truckOwner">Chef / Truck Owner</option>
-            <option value="customer">Foodie / Hungry Person</option>
-          </select>
-          {errors.roleId.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.roleId}</ErrorP>
-          ) : null}
-           User Type
-        </label>
-        <br></br>
-        <label htmlFor="name">
-          <input
-            id="name"
-            name="name"
-            data-cy="name"
-            placeholder="Enter Full Name Here"
-            type="text"
-            value={formState.name}
-            onChange={onChange}
-          />{" "}
-          Name
-          {errors.name.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.name}</ErrorP>
-          ) : null}
-        </label>{" "}
-        <br></br>
-        <label htmlFor="email">
-          <input
-            id="email"
-            name="email"
-            data-cy="email"
-            placeholder="email address"
-            type="email"
-            value={formState.email}
-            onChange={onChange}
-          />{" "}
-          Email Address
-          {errors.email.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.email}</ErrorP>
-          ) : null}
-        </label>
-        <br></br>
-        <label htmlFor="phoneNumber">
-          <input
-            id="phoneNumber"
-            name="phoneNumber"
-            data-cy="phoneNumber"
-            type="tel"
-            placeholder="phone num with area code"
-            value={formState.phone}
-            onChange={onChange}
-          />{" "}
-          Phone Number
-          {errors.phoneNumber.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.phoneNumber}</ErrorP>
-          ) : null}
-        </label>
-        <br></br>
-        <label htmlFor="username">
-          <input
-            id="username"
-            name="username"
-            data-cy="username"
-            placeholder="select user name"
-            type="text"
-            value={formState.userName}
-            onChange={onChange}
-          />{" "}
-          User Name
-          {errors.username.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.username}</ErrorP>
-          ) : null}
-        </label>
-        <br></br>
-        <label htmlFor="password">
-          <input
-            id="password"
-            name="password"
-            data-cy="password"
-            type="password"
-            placeholder="select password"
-            value={formState.password}
-            onChange={onChange}
-          />{" "}
-          Password
-          {errors.password.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.password}</ErrorP>
-          ) : null}
-        </label>
-        <br></br>
-       
-        <br></br>
-        <label htmlFor="terms">
-          <input
-            id="terms"
-            name="terms"
-            value="terms"
-            data-cy="terms"
-            type="checkbox"
-            onChange={onChange}
-          />{" "}
-          Terms and Conditions
-          {errors.terms.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.terms}</ErrorP>
-          ) : null}
-        </label>
-        <br></br>
-        <button type="submit" data-cy="submit" disabled={buttonOff}>
+    <RegDiv onSubmit={onSubmit}>
+      <label htmlFor="roleId">
+        <select
+          id="roleId"
+          name="roleId"
+          data-cy="roleId"
+          value={formState.type}
+          onChange={onChange}
+        >
+          <option value="">---Choose One---</option>
+          <option value="truckOwner">Chef / Truck Owner</option>
+          <option value="customer">Foodie / Hungry Person</option>
+        </select>
+        {errors.roleId.length > 0 ? (
+          <ErrorP style={{ color: "red" }}>{errors.roleId}</ErrorP>
+        ) : null}
+        User Type
+      </label>
+      <br></br>
+      <label htmlFor="name">
+        <input
+          id="name"
+          name="name"
+          data-cy="name"
+          placeholder="Enter Full Name Here"
+          type="text"
+          value={formState.name}
+          onChange={onChange}
+        />{" "}
+        Name
+        {errors.name.length > 0 ? (
+          <ErrorP style={{ color: "red" }}>{errors.name}</ErrorP>
+        ) : null}
+      </label>{" "}
+      <br></br>
+      <label htmlFor="email">
+        <input
+          id="email"
+          name="email"
+          data-cy="email"
+          placeholder="email address"
+          type="email"
+          value={formState.email}
+          onChange={onChange}
+        />{" "}
+        Email Address
+        {errors.email.length > 0 ? (
+          <ErrorP style={{ color: "red" }}>{errors.email}</ErrorP>
+        ) : null}
+      </label>
+      <br></br>
+      <label htmlFor="phoneNumber">
+        <input
+          id="phoneNumber"
+          name="phoneNumber"
+          data-cy="phoneNumber"
+          type="tel"
+          placeholder="phone num with area code"
+          value={formState.phone}
+          onChange={onChange}
+        />{" "}
+        Phone Number
+        {errors.phoneNumber.length > 0 ? (
+          <ErrorP style={{ color: "red" }}>{errors.phoneNumber}</ErrorP>
+        ) : null}
+      </label>
+      <br></br>
+      <label htmlFor="username">
+        <input
+          id="username"
+          name="username"
+          data-cy="username"
+          placeholder="select user name"
+          type="text"
+          value={formState.userName}
+          onChange={onChange}
+        />{" "}
+        User Name
+        {errors.username.length > 0 ? (
+          <ErrorP style={{ color: "red" }}>{errors.username}</ErrorP>
+        ) : null}
+      </label>
+      <br></br>
+      <label htmlFor="password">
+        <input
+          id="password"
+          name="password"
+          data-cy="password"
+          type="password"
+          placeholder="select password"
+          value={formState.password}
+          onChange={onChange}
+        />{" "}
+        Password
+        {errors.password.length > 0 ? (
+          <ErrorP style={{ color: "red" }}>{errors.password}</ErrorP>
+        ) : null}
+      </label>
+      <br></br>
+      <br></br>
+      <label htmlFor="terms">
+        <input
+          id="terms"
+          name="terms"
+          value="terms"
+          data-cy="terms"
+          type="checkbox"
+          onChange={onChange}
+        />{" "}
+        Terms and Conditions
+        {errors.terms.length > 0 ? (
+          <ErrorP style={{ color: "red" }}>{errors.terms}</ErrorP>
+        ) : null}
+      </label>
+      <br></br>
+      <button
+        style={{
+          background: "black",
+          color: "white",
+          borderRadius: "8px",
+          width: "150px",
+          height: "30px",
+          fontSize: "1.2rem",
+          border: "none",
+          marginTop: "2%",
+        }}
+        type="submit"
+        data-cy="submit"
+        disabled={buttonOff}
+      >
         Register
       </button>
-      </FormDiv>
-      
-    
+    </RegDiv>
   );
 };
 
