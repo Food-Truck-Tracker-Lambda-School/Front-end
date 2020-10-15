@@ -26,10 +26,10 @@ const HomePage = () => {
       <h4
         style={{
           position: "fixed",
-          color: "white",
-          fontSize: "2.3rem",
+          color: "#161E2A",
+          fontSize: "2.5rem",
           marginLeft: "40%",
-          marginTop: "31%",
+          marginTop: "10%",
           fontFamily: "Sansita Swashed",
         }}
       >
