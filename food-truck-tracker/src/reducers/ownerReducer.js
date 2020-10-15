@@ -1,7 +1,7 @@
 import {
-	FETCHING_ownerS_START,
-	FETCHING_ownerS_SUCCESS,
-	FETCHING_ownerS_ERROR,
+	FETCHING_OWNERS_START,
+	FETCHING_OWNERS_SUCCESS,
+	FETCHING_OWNERS_ERROR,
 	ADD_TRUCK,
 	UPDATE_TRUCK,
 	REMOVE_TRUCK,
@@ -22,5 +22,6 @@ const initialState = {
 
 export const ownerReducer = (state = initialState, action) => {
 	switch (action.type) {
+		
 	}
 };

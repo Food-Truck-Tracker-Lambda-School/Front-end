@@ -18,7 +18,7 @@ const initialState = {
 	error: '',
 	trucks: [],
 	user: {
-		roleID: '',
+		roleId: '',
 		name: '',
 		email: '',
 		phoneNumber: '',

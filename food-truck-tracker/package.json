@@ -10,16 +10,9 @@
     "cypress": "^5.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-<<<<<<< HEAD
     "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
     "react-thunk": "^1.0.0"
-=======
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "styled-components": "^5.2.0",
-    "yup": "^0.29.3"
->>>>>>> f411bfc4763bb31de4a3c1b526823c9aa77ccc58
   },
   "scripts": {
     "start": "react-scripts start",
