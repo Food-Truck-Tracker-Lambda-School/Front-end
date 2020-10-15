@@ -14,28 +14,32 @@ const FormDiv = styled.form`
 
 const Registration = () => {
   const [formState, setFormState] = useState({
-    roleId: "",
-    name: "",
-    email: "",
-    phoneNumber: "",
-    username: "",
-    password: "",
-    
-    terms: false,
+		roleId: '',
+		name: '',
+		email: '',
+		phoneNumber: '',
+		currentLocation: '',
+		username: '',
+		password: '',
+		passwordConfirm: '',
+		terms: false,
+		favoriteTrucks: [],
   });
   //button state
   const [buttonOff, setButtonOff] = useState(true);
 
   //errors state
   const [errors, setErrors] = useState({
-    roleId: "",
-    name: "",
-    email: "",
-    phoneNumber: "",
-    username: "",
-    password: "",
-    
-    terms: "",
+		roleId: '',
+		name: '',
+		email: '',
+		phoneNumber: '',
+		currentLocation: '',
+		username: '',
+		password: '',
+		passwordConfirm: '',
+		terms: false,
+		favoriteTrucks: [],
   });
 
   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -104,14 +108,16 @@ const Registration = () => {
       .then((response) => {
         console.log("Data Response", response.data);
         setFormState({
-          roleId: "",
-          name: "",
-          email: "",
-          phoneNumber: "",
-          username: "",
-          password: "",
-          
+          roleId: '',
+          name: '',
+          email: '',
+          phoneNumber: '',
+          currentLocation: '',
+          username: '',
+          password: '',
+          passwordConfirm: '',
           terms: false,
+          favoriteTrucks: [],
         });
       })
       .catch((err) => console.log("error", err.response));
