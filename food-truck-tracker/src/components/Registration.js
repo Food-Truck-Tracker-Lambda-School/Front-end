@@ -14,10 +14,10 @@ const FormDiv = styled.form`
 
 const Registration = () => {
   const [formState, setFormState] = useState({
-    type: "",
+    roleId: "",
     name: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     username: "",
     password: "",
     passwordConfirm: "",
@@ -28,7 +28,7 @@ const Registration = () => {
 
   //errors state
   const [errors, setErrors] = useState({
-    roleID: "",
+    roleId: "",
     name: "",
     email: "",
     phoneNumber: "",
@@ -42,7 +42,7 @@ const Registration = () => {
 
   //validation code sections
   const schema = yup.object().shape({
-    roleID: yup.string().oneOf(["truckOwner", "customer"]),
+    roleId: yup.string().oneOf(["truckOwner", "customer"]),
     name: yup
       .string()
       .required("Must Input Full Name")
@@ -70,7 +70,7 @@ const Registration = () => {
     schema.isValid(formState).then((val) => {
       setButtonOff(!val);
     });
-  }, [formState, schema]);
+  }, [formState]);
 
   const validateChanges = (e) => {
     yup
@@ -106,7 +106,7 @@ const Registration = () => {
       .then((response) => {
         console.log("Data Response", response.data);
         setFormState({
-          roleID: "",
+          roleId: "",
           name: "",
           email: "",
           phoneNumber: "",
@@ -135,8 +135,8 @@ const Registration = () => {
             <option value="truckOwner">Chef / Truck Owner</option>
             <option value="customer">Foodie / Hungry Person</option>
           </select>
-          {errors.type.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.type}</ErrorP>
+          {errors.roleId.length > 0 ? (
+            <ErrorP style={{ color: "red" }}>{errors.roleId}</ErrorP>
           ) : null}
            User Type
         </label>
@@ -184,8 +184,8 @@ const Registration = () => {
             onChange={onChange}
           />{" "}
           Phone Number
-          {errors.phone.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.phone}</ErrorP>
+          {errors.phoneNumber.length > 0 ? (
+            <ErrorP style={{ color: "red" }}>{errors.phoneNumber}</ErrorP>
           ) : null}
         </label>
         <br></br>
@@ -200,8 +200,8 @@ const Registration = () => {
             onChange={onChange}
           />{" "}
           User Name
-          {errors.userName.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.userName}</ErrorP>
+          {errors.username.length > 0 ? (
+            <ErrorP style={{ color: "red" }}>{errors.username}</ErrorP>
           ) : null}
         </label>
         <br></br>
