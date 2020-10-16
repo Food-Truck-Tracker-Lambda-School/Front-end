@@ -8,9 +8,9 @@ const ErrorP = styled.p`
 	color: red;
 `;
 
-const RegDiv = styled.div`
+const RegDiv = styled.form`
 	width: 400px;
-	background: #6495ed;
+	background: #a10c00;
 	color: white;
 	padding: 2%;
 	position: fixed;
@@ -49,7 +49,7 @@ const Registration = () => {
 
 	//validation code sections
 	const schema = yup.object().shape({
-		roleId: yup.string().oneOf(['truckOwner', 'customer']),
+		roleId: yup.string().oneOf(['1', '2']),
 		name: yup
 			.string()
 			.required('Must Input Full Name')
@@ -94,18 +94,29 @@ const Registration = () => {
 	const onChange = (e) => {
 		e.persist();
 		validateChanges(e);
+		let value = e.target.value;
+		if (e.target.type === 'checkbox') {
+			value = e.target.checked;
+		} else if (e.target.name === 'roleId') {
+			value = parseInt(e.target.value); // moving the roleId values in the return to integers for database
+		} else if (e.target.name === 'phoneNumber') {
+			value = parseInt(e.target.value); // making phone number input an integer for database
+		}
 		setFormState({
 			...formState,
-			[e.target.name]:
-				e.target.type === 'checkbox' ? e.target.checked : e.target.value,
+			[e.target.name]: value,
 		});
 	};
 
 	//onSubmit form function
 	const onSubmit = (e) => {
 		e.preventDefault();
+		const { terms, ...postState } = formState;
 		axios
-			.post('https://reqres.in/api/users', formState)
+			.post(
+				'https://foodtrucktrackers.herokuapp.com/api/auth/register',
+				postState
+			)
 			.then((response) => {
 				console.log('Data Response', response.data);
 				setFormState({
@@ -115,7 +126,6 @@ const Registration = () => {
 					phoneNumber: '',
 					username: '',
 					password: '',
-
 					terms: false,
 				});
 			})
@@ -133,8 +143,8 @@ const Registration = () => {
 					onChange={onChange}
 				>
 					<option value="">---Choose One---</option>
-					<option value="truckOwner">Chef / Truck Owner</option>
-					<option value="customer">Foodie / Hungry Person</option>
+					<option value="1">Chef / Truck Owner</option>
+					<option value="2">Foodie / Hungry Person</option>
 				</select>
 				{errors.roleId.length > 0 ? (
 					<ErrorP style={{ color: 'red' }}>{errors.roleId}</ErrorP>
@@ -181,7 +191,7 @@ const Registration = () => {
 					data-cy="phoneNumber"
 					type="tel"
 					placeholder="phone num with area code"
-					value={formState.phone}
+					value={formState.phoneNumber}
 					onChange={onChange}
 				/>{' '}
 				Phone Number
@@ -197,7 +207,7 @@ const Registration = () => {
 					data-cy="username"
 					placeholder="select user name"
 					type="text"
-					value={formState.userName}
+					value={formState.username}
 					onChange={onChange}
 				/>{' '}
 				User Name
@@ -240,8 +250,8 @@ const Registration = () => {
 			<br></br>
 			<button
 				style={{
-					background: 'black',
-					color: 'white',
+					background: '#F9AE0a',
+					color: '#A10E00',
 					borderRadius: '8px',
 					width: '150px',
 					height: '30px',
