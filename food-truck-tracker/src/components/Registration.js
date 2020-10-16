@@ -10,7 +10,7 @@ const ErrorP = styled.p`
 
 const RegDiv = styled.form`
   width: 400px;
-  background: #6495ED;
+  background: #A10C00;
   color: white;
   padding: 2%;
   position: fixed;
@@ -249,8 +249,8 @@ const Registration = () => {
       <br></br>
       <button
         style={{
-          background: "black",
-          color: "white",
+          background: "#F9AE0a",
+          color: "#A10E00",
           borderRadius: "8px",
           width: "150px",
           height: "30px",
