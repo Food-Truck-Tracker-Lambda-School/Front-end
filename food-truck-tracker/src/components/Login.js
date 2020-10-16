@@ -3,7 +3,7 @@ import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 
-const LogDiv = styled.div`
+const LogDiv = styled.form`
   width: 400px;
   background: #6495ED;
   color: white;
@@ -13,6 +13,8 @@ const LogDiv = styled.div`
   border-radius: 10px;
   overflow: hidden;
 `;
+
+
 
 const Login = () => {
   const [formState, setFormState] = useState({
@@ -26,7 +28,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios.post("https://reqres.in/api/users", formState).then((resp) => {
+    axios.post("https://foodtrucktrackers.herokuapp.com/api/auth/login", formState).then((resp) => {
       console.log("data response", resp.data);
       setFormState({
         username: "",
@@ -56,22 +58,22 @@ const Login = () => {
             data-cy='password'
             type='password'
             placeholder='Enter Password'
-            value={formState.username}
+            value={formState.password}
             onChange={onChange}
         />
-        User Name
+        Password
       </label> <br/>
       <button
-        style={{
-          background: "black",
-          color: "white",
-          borderRadius: "8px",
-          width: "150px",
-          height: "30px",
-          fontSize: "1.2rem",
-          border: "none",
-          marginTop: "2%",
-        }}
+        // style={{
+        //   background: "black",
+        //   color: "white",
+        //   borderRadius: "8px",
+        //   width: "150px",
+        //   height: "30px",
+        //   fontSize: "1.2rem",
+        //   border: "none",
+        //   marginTop: "2%",
+        // }}
         type="submit"
         data-cy="submit"
         // disabled={buttonOff}
