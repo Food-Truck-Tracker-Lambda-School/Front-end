@@ -12,8 +12,8 @@ import {
 const initialState = {
 	isFetching: false,
 	error: '',
-	ownerInfo: {
-		ownerId: localStorage.getItem('ownerId'),
+	ownerInfo: { // ownerInfo might be different based on user designation as diner or owner...
+		ownerId: localStorage.getItem('ownerId'), // may not need a separate designation at all, maybe just userId
 		username: '',
 		email: '',
 		trucksOwned: [{ customerRatings: [2, 3, 4] }],
@@ -22,33 +22,35 @@ const initialState = {
 
 export const ownerReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case FETCHING_OWNERS_START:
+		case FETCHING_OWNERS_START: // Initializes fetching state. Will we have a loading icon?
 			return {
 				...state,
 				isFetching: true,
 			};
-		case FETCHING_OWNERS_SUCCESS:
+
+		case FETCHING_OWNERS_SUCCESS: // returns owner info on successful axios call
 			return {
 				...state,
 				isFetching: false,
 				ownerInfo: action.payload,
 				error: '',
 			};
-		case FETCHING_OWNERS_FAIL:
+
+		case FETCHING_OWNERS_FAIL: // returns error status on failure 
 			return {
 				...state,
 				isFetching: false,
 				error: action.payload,
 			};
 
-		case ADD_TRUCK:
+		case ADD_TRUCK: // appends a new truck to owners trucks array
 			return {
 				...state,
 				ownerInfo: state.ownerId,
 				trucksOwned: [...state.ownerInfo.trucksOwned, action.payload],
 			};
 
-		case UPDATE_TRUCK:
+		case UPDATE_TRUCK: // allows owner to edit properties of existing truck
 			return {
 				...state,
 				ownerInfo: {
@@ -59,7 +61,7 @@ export const ownerReducer = (state = initialState, action) => {
 				},
 			};
 
-		case REMOVE_TRUCK:
+		case REMOVE_TRUCK: // allows owner to delete an existing truck
 			return {
 				...state,
 				ownerInfo: {
@@ -70,7 +72,7 @@ export const ownerReducer = (state = initialState, action) => {
 				},
 			};
 
-		case ADD_MENUITEM:
+		case ADD_MENUITEM: // owner can add a new item to their menu
 			return {
 				...state,
 				ownerInfo: {
@@ -84,7 +86,7 @@ export const ownerReducer = (state = initialState, action) => {
 				},
 			};
 
-		case REMOVE_MENUITEM:
+		case REMOVE_MENUITEM: // owner can remove an item from their menu
 			return {
 				...state,
 				ownerInfo: {
