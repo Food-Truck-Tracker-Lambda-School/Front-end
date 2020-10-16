@@ -31,7 +31,7 @@ export const fetchOwnerData = (id) => (dispatch) => {
 		.catch((err) => {
 			console.log(
 				'pl: actions.js: fetchOwnerData: axios get failure: res: ',
-				res
+				err
 			);
 			dispatch({ type: FETCHING_OWNERS_FAIL, payload: err.message });
 		});
@@ -69,10 +69,11 @@ export const updateTruck = (truckId, selectTruck) => (dispatch) => {
 				'pl: actions.js: updateTruck: axios put failure: results',
 				err.message
 			);
-		});
+		}); 
+};
 
 // Allows owner to delete truck from db
-	export const removeTruck = (id, selectTruck) => (dispatch) => {
+export const removeTruck = (id, selectTruck) => (dispatch) => {
 		axiosWithAuth()
 			.delete(`/api/trucks/${id}`, selectTruck)
 			.then((res) => {
@@ -91,7 +92,7 @@ export const updateTruck = (truckId, selectTruck) => (dispatch) => {
 	};
 
 // Allows owner to add new items to menu
-	export const addMenuItem = (id, menuItem) => (dispatch) => {
+export const addMenuItem = (id, menuItem) => (dispatch) => {
 		axiosWithAuth()
 			.post(`/api/trucks/${id}/menu`, menuItem)
 			.then((res) => {
@@ -110,7 +111,7 @@ export const updateTruck = (truckId, selectTruck) => (dispatch) => {
 	};
 
 // Allows owner to edit and update menu items
-	export const updateMenuItem = (truckId, menuItemId, selectItem) => (
+export const updateMenuItem = (truckId, menuItemId, selectItem) => (
 		dispatch
 	) => {
 		axiosWithAuth()
@@ -145,4 +146,3 @@ export const updateTruck = (truckId, selectTruck) => (dispatch) => {
 				console.error('delete failed', err.message);
 			});
 	};
-};
