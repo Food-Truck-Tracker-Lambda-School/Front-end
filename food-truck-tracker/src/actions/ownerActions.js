@@ -14,7 +14,6 @@ export const ADD_MENUITEM = 'ADD_MENUITEM';
 export const UPDATE_MENUITEM = 'UPDATE_MENUITEM';
 export const REMOVE_MENUITEM = 'REMOVE_MENUITEM';
 
-
 // This function will fetch truck owner info from DB
 export const fetchOwnerData = (id) => (dispatch) => {
 	dispatch({ type: FETCHING_OWNERS_START });
@@ -31,7 +30,11 @@ export const fetchOwnerData = (id) => (dispatch) => {
 		.catch((err) => {
 			console.log(
 				'pl: actions.js: fetchOwnerData: axios get failure: res: ',
+<<<<<<< HEAD
 				err
+=======
+				err.message
+>>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 			);
 			dispatch({ type: FETCHING_OWNERS_FAIL, payload: err.message });
 		});
@@ -69,11 +72,16 @@ export const updateTruck = (truckId, selectTruck) => (dispatch) => {
 				'pl: actions.js: updateTruck: axios put failure: results',
 				err.message
 			);
+<<<<<<< HEAD
 		}); 
+=======
+		});
+>>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 };
 
 // Allows owner to delete truck from db
 export const removeTruck = (id, selectTruck) => (dispatch) => {
+<<<<<<< HEAD
 		axiosWithAuth()
 			.delete(`/api/trucks/${id}`, selectTruck)
 			.then((res) => {
@@ -88,11 +96,28 @@ export const removeTruck = (id, selectTruck) => (dispatch) => {
 			})
 			.catch((err) => {
 				console.error('Failure to delete truck', err.message);
+=======
+	axiosWithAuth()
+		.delete(`/api/trucks/${id}`, selectTruck)
+		.then((res) => {
+			console.log(
+				'pl: actions.js: removeTruck: axios delete success: results: ',
+				res
+			);
+			dispatch({
+				type: REMOVE_TRUCK,
+				payload: res.data.id,
+>>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 			});
-	};
+		})
+		.catch((err) => {
+			console.error('Failure to delete truck', err.message);
+		});
+};
 
 // Allows owner to add new items to menu
 export const addMenuItem = (id, menuItem) => (dispatch) => {
+<<<<<<< HEAD
 		axiosWithAuth()
 			.post(`/api/trucks/${id}/menu`, menuItem)
 			.then((res) => {
@@ -107,11 +132,28 @@ export const addMenuItem = (id, menuItem) => (dispatch) => {
 			})
 			.catch((err) => {
 				console.error(err);
+=======
+	axiosWithAuth()
+		.post(`/api/trucks/${id}/menu`, menuItem)
+		.then((res) => {
+			console.log(
+				'pl: actions.js: addMenuItem: axios post success: results: ',
+				res
+			);
+			dispatch({
+				type: ADD_MENUITEM,
+				payload: { data: res.data, truckId: id },
+>>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 			});
-	};
+		})
+		.catch((err) => {
+			console.error(err);
+		});
+};
 
 // Allows owner to edit and update menu items
 export const updateMenuItem = (truckId, menuItemId, selectItem) => (
+<<<<<<< HEAD
 		dispatch
 	) => {
 		axiosWithAuth()
@@ -128,21 +170,43 @@ export const updateMenuItem = (truckId, menuItemId, selectItem) => (
 			})
 			.catch((err) => {
 				console.error(err);
+=======
+	dispatch
+) => {
+	axiosWithAuth()
+		.put(`/api/trucks/${truckId}/menu/${menuItemId}`, selectItem)
+		.then((res) => {
+			console.log(
+				'pl: actions.js: updateMenuItem: axios put success: res: ',
+				res
+			);
+			dispatch({
+				type: UPDATE_MENUITEM,
+				payload: res.data,
+>>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 			});
-	};
+		})
+		.catch((err) => {
+			console.error(err);
+		});
+};
 
 // Allows owner to delete menu items
-	export const removeMenuItem = (truckId, menuItemId) => (dispatch) => {
-		axiosWithAuth()
-			.delete(`/api/trucks/${truckId}/menu/${menuItemId}`)
-			.then((res) => {
-				console.log('delete successful', res);
-				dispatch({
-					type: REMOVE_MENUITEM,
-					payload: { truckId: truckId, menuItemId: menuItemId },
-				});
-			})
-			.catch((err) => {
-				console.error('delete failed', err.message);
+export const removeMenuItem = (truckId, menuItemId) => (dispatch) => {
+	axiosWithAuth()
+		.delete(`/api/trucks/${truckId}/menu/${menuItemId}`)
+		.then((res) => {
+			console.log('delete successful', res);
+			dispatch({
+				type: REMOVE_MENUITEM,
+				payload: { truckId: truckId, menuItemId: menuItemId },
 			});
+<<<<<<< HEAD
 	};
+=======
+		})
+		.catch((err) => {
+			console.error('delete failed', err.message);
+		});
+};
+>>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
