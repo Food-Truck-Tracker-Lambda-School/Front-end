@@ -64,16 +64,16 @@ const Login = () => {
         Password
       </label> <br/>
       <button
-        // style={{
-        //   background: "black",
-        //   color: "white",
-        //   borderRadius: "8px",
-        //   width: "150px",
-        //   height: "30px",
-        //   fontSize: "1.2rem",
-        //   border: "none",
-        //   marginTop: "2%",
-        // }}
+        style={{
+          background: "black",
+          color: "white",
+          borderRadius: "8px",
+          width: "150px",
+          height: "30px",
+          fontSize: "1.2rem",
+          border: "none",
+          marginTop: "2%",
+        }}
         type="submit"
         data-cy="submit"
         // disabled={buttonOff}
