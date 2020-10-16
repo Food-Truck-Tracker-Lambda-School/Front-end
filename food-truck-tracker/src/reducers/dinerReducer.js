@@ -11,7 +11,7 @@ import {
 	ADD_TRUCK_RATING_FAIL,
 	ADD_MENU_RATING_SUCCESS,
 	ADD_MENU_RATING_FAIL,
-} from '../actions/ownerActions';
+} from '../actions/dinerActions';
 
 const initialState = {
 	isFetching: false,
