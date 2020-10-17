@@ -30,11 +30,7 @@ export const fetchOwnerData = (id) => (dispatch) => {
 		.catch((err) => {
 			console.log(
 				'pl: actions.js: fetchOwnerData: axios get failure: res: ',
-<<<<<<< HEAD
-				err
-=======
 				err.message
->>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 			);
 			dispatch({ type: FETCHING_OWNERS_FAIL, payload: err.message });
 		});
@@ -72,31 +68,11 @@ export const updateTruck = (truckId, selectTruck) => (dispatch) => {
 				'pl: actions.js: updateTruck: axios put failure: results',
 				err.message
 			);
-<<<<<<< HEAD
-		}); 
-=======
 		});
->>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 };
 
 // Allows owner to delete truck from db
 export const removeTruck = (id, selectTruck) => (dispatch) => {
-<<<<<<< HEAD
-		axiosWithAuth()
-			.delete(`/api/trucks/${id}`, selectTruck)
-			.then((res) => {
-				console.log(
-					'pl: actions.js: removeTruck: axios delete success: results: ',
-					res
-				);
-				dispatch({
-					type: REMOVE_TRUCK,
-					payload: res.data.id,
-				});
-			})
-			.catch((err) => {
-				console.error('Failure to delete truck', err.message);
-=======
 	axiosWithAuth()
 		.delete(`/api/trucks/${id}`, selectTruck)
 		.then((res) => {
@@ -107,7 +83,6 @@ export const removeTruck = (id, selectTruck) => (dispatch) => {
 			dispatch({
 				type: REMOVE_TRUCK,
 				payload: res.data.id,
->>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 			});
 		})
 		.catch((err) => {
@@ -117,22 +92,6 @@ export const removeTruck = (id, selectTruck) => (dispatch) => {
 
 // Allows owner to add new items to menu
 export const addMenuItem = (id, menuItem) => (dispatch) => {
-<<<<<<< HEAD
-		axiosWithAuth()
-			.post(`/api/trucks/${id}/menu`, menuItem)
-			.then((res) => {
-				console.log(
-					'pl: actions.js: addMenuItem: axios post success: results: ',
-					res
-				);
-				dispatch({
-					type: ADD_MENUITEM,
-					payload: { data: res.data, truckId: id },
-				});
-			})
-			.catch((err) => {
-				console.error(err);
-=======
 	axiosWithAuth()
 		.post(`/api/trucks/${id}/menu`, menuItem)
 		.then((res) => {
@@ -143,7 +102,6 @@ export const addMenuItem = (id, menuItem) => (dispatch) => {
 			dispatch({
 				type: ADD_MENUITEM,
 				payload: { data: res.data, truckId: id },
->>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 			});
 		})
 		.catch((err) => {
@@ -153,24 +111,6 @@ export const addMenuItem = (id, menuItem) => (dispatch) => {
 
 // Allows owner to edit and update menu items
 export const updateMenuItem = (truckId, menuItemId, selectItem) => (
-<<<<<<< HEAD
-		dispatch
-	) => {
-		axiosWithAuth()
-			.put(`/api/trucks/${truckId}/menu/${menuItemId}`, selectItem)
-			.then((res) => {
-				console.log(
-					'pl: actions.js: updateMenuItem: axios put success: res: ',
-					res
-				);
-				dispatch({
-					type: UPDATE_MENUITEM,
-					payload: res.data,
-				});
-			})
-			.catch((err) => {
-				console.error(err);
-=======
 	dispatch
 ) => {
 	axiosWithAuth()
@@ -183,7 +123,6 @@ export const updateMenuItem = (truckId, menuItemId, selectItem) => (
 			dispatch({
 				type: UPDATE_MENUITEM,
 				payload: res.data,
->>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
 			});
 		})
 		.catch((err) => {
@@ -201,12 +140,8 @@ export const removeMenuItem = (truckId, menuItemId) => (dispatch) => {
 				type: REMOVE_MENUITEM,
 				payload: { truckId: truckId, menuItemId: menuItemId },
 			});
-<<<<<<< HEAD
-	};
-=======
 		})
 		.catch((err) => {
 			console.error('delete failed', err.message);
 		});
 };
->>>>>>> d4b53575bf1071e030ac8f448fcca7dcf7aeb769
