@@ -3,25 +3,21 @@ import axios from "axios";
 import * as yup from "yup";
 import styled from "styled-components";
 import backImg from "../Images/backGround.png";
-
 const ErrorP = styled.p`
   font-size: 1.2rem;
   color: red;
 `;
-
 const RegDiv = styled.form`
   width: 400px;
   background: #a10c00;
   color: white;
   padding: 2%;
-  position: fixed;
+  position: relative;
   margin: 2% 15% 15% 30%;
   border-radius: 10px;
   overflow: hidden;
+  z-index: 2;
 `;
-
-
-
 const Registration = () => {
   const [formState, setFormState] = useState({
     roleId: "",
@@ -34,7 +30,6 @@ const Registration = () => {
   });
   //button state
   const [buttonOff, setButtonOff] = useState(true);
-
   //errors state
   const [errors, setErrors] = useState({
     roleId: "",
@@ -45,9 +40,7 @@ const Registration = () => {
     password: "",
     terms: "",
   });
-
   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
   //validation code sections
   const schema = yup.object().shape({
     roleId: yup.string().oneOf(["1", "2"]),
@@ -70,13 +63,11 @@ const Registration = () => {
       .min(6, "Min 6 characters"),
     terms: yup.boolean().oneOf([true], "Please agree to T&C's"),
   });
-
   useEffect(() => {
     schema.isValid(formState).then((val) => {
       setButtonOff(!val);
     });
   }, [formState]);
-
   const validateChanges = (e) => {
     yup
       .reach(schema, e.target.name)
@@ -90,7 +81,6 @@ const Registration = () => {
         setErrors({ ...errors, [e.target.name]: err.errors[0] });
       });
   };
-
   //form input change function
   const onChange = (e) => {
     e.persist();
@@ -108,7 +98,6 @@ const Registration = () => {
       [e.target.name]: value,
     });
   };
-
   //onSubmit form function
   const onSubmit = (e) => {
     e.preventDefault();
@@ -132,7 +121,6 @@ const Registration = () => {
       })
       .catch((err) => console.log("error", err.response));
   };
-
   return (
     <div>
       <RegDiv onSubmit={onSubmit}>
@@ -271,10 +259,17 @@ const Registration = () => {
       <img
         src={backImg}
         alt="food Truck"
-        style={{ width: "100vw", height: "100vh", opacity:"0.8"}}        
+        style={{
+          width: "99vw",
+          height: "87vh",
+          left: "0",
+          top: "5rem",
+          opacity: "0.6",
+          zIndex: 1,
+          position: "absolute",
+        }}
       />
     </div>
   );
 };
-
 export default Registration;
