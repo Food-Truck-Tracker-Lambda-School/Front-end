@@ -88,7 +88,7 @@ const Login = () => {
       <img
         src={backImg}
         alt="food Truck"
-        style={{width: '100vw', height: '100vh'}}
+        style={{width: '100vw', height: '100vh', opacity: "0.8"}}
       />
     </>
   );

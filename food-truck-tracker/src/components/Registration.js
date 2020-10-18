@@ -20,6 +20,8 @@ const RegDiv = styled.form`
   overflow: hidden;
 `;
 
+
+
 const Registration = () => {
   const [formState, setFormState] = useState({
     roleId: "",
@@ -269,8 +271,7 @@ const Registration = () => {
       <img
         src={backImg}
         alt="food Truck"
-        style={{ width: "100vw", height: "100vh" }}
-        opacity="0.5"
+        style={{ width: "100vw", height: "100vh", opacity:"0.8"}}        
       />
     </div>
   );
