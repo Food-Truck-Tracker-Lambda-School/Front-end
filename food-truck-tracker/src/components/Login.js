@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import * as yup from "yup";
+import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import backImg from "../Images/backGround.png";
@@ -14,6 +13,7 @@ const LogDiv = styled.form`
   margin: 2% 15% 15% 30%;
   border-radius: 10px;
   overflow: hidden;
+  z-index: 2;
 `;
 
 const Login = () => {
@@ -88,7 +88,15 @@ const Login = () => {
       <img
         src={backImg}
         alt="food Truck"
-        style={{width: '100vw', height: '100vh'}}
+        style={{
+          width: "99vw",
+          height: "88vh",
+          left: "0",
+          top: "5rem",
+          opacity: "0.6",
+          zIndex: 1,
+          position: "absolute",
+        }}
       />
     </>
   );
