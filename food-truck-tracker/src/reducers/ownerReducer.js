@@ -12,7 +12,8 @@ import {
 const initialState = {
 	isFetching: false,
 	error: '',
-	ownerInfo: { // ownerInfo might be different based on user designation as diner or owner...
+	ownerInfo: {
+		// ownerInfo might be different based on user designation as diner or owner...
 		ownerId: localStorage.getItem('ownerId'), // may not need a separate designation at all, maybe just userId
 		username: '',
 		email: '',
@@ -36,7 +37,7 @@ export const ownerReducer = (state = initialState, action) => {
 				error: '',
 			};
 
-		case FETCHING_OWNERS_FAIL: // returns error status on failure 
+		case FETCHING_OWNERS_FAIL: // returns error status on failure
 			return {
 				...state,
 				isFetching: false,
@@ -97,8 +98,8 @@ export const ownerReducer = (state = initialState, action) => {
 							temp.menu = truck.menu.filter((menu) => {
 								return menu.id !== action.payload.menuItemId;
 							});
-							return temp;
 						}
+						return temp;
 					}),
 				},
 			};

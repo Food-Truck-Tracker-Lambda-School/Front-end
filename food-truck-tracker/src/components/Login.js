@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from "styled-components";
 import backImg from "../Images/backGround.png";
 
@@ -28,7 +29,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios
+    axiosWithAuth()
       .post("https://foodtrucktrackers.herokuapp.com/api/auth/login", formState)
       .then((resp) => {
         console.log("data response", resp.data);
