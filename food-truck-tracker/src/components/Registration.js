@@ -67,7 +67,7 @@ const Registration = () => {
     schema.isValid(formState).then((val) => {
       setButtonOff(!val);
     });
-  }, [formState]);
+  }, [formState, schema]);
   const validateChanges = (e) => {
     yup
       .reach(schema, e.target.name)
