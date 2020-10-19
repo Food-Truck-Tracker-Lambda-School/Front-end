@@ -104,10 +104,7 @@ const Registration = () => {
 		e.preventDefault();
 		const { terms, ...postState } = formState;
 		axiosWithAuth()
-			.post(
-				'https://foodtrucktrackers.herokuapp.com/api/auth/register',
-				postState
-			)
+			.post('/api/auth/register', postState)
 			.then((response) => {
 				console.log('Data Response', response.data);
 				setFormState({
