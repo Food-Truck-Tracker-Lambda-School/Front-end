@@ -25,9 +25,6 @@ const LogDiv = styled.form`
 
 	const history = useHistory();
 
-	const onChange = (e) => {
-		setFormState({ ...formState, [e.target.name]: e.target.value });
-	};
   const onChange = (e) => {
       e.persist();
       validateChanges(e);
