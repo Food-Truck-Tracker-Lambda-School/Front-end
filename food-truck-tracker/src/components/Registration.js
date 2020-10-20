@@ -3,7 +3,7 @@ import * as yup from "yup";
 import styled from "styled-components";
 import backImg from "../Images/backGround.png";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const ErrorP = styled.p`
   font-size: 1.2rem;
@@ -21,7 +21,6 @@ const RegDiv = styled.form`
   z-index: 2;
 `;
 const Registration = () => {
-
   const history = useHistory();
 
   const [formState, setFormState] = useState({
@@ -110,9 +109,8 @@ const Registration = () => {
     axiosWithAuth()
       .post("/api/auth/register", postState)
       .then((response) => {
-        history.push('/dashboard')
+        history.push("/dashboard");
         console.log("Data Response", response.data);
-
         setFormState({
           roleId: "",
           name: "",

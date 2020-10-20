@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import * as yup from "yup";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
 import backImg from "../Images/backGround.png";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const LogDiv = styled.form`
   width: 400px;
@@ -18,7 +18,6 @@ const LogDiv = styled.form`
 `;
 
 const Login = () => {
-
   const history = useHistory();
 
   const [formState, setFormState] = useState({
@@ -27,7 +26,44 @@ const Login = () => {
   });
 
   const onChange = (e) => {
+    e.persist();
+    validateChanges(e);
     setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
+
+  //validation coding below
+  const [buttonOff, setButtonOff] = useState(true);
+  const [errors, setErrors] = useState({
+    username: "",
+    password: "",
+  });
+  const schema = yup.object().shape({
+    username: yup
+      .string()
+      .required("User Name Required")
+      .min(5, "Min 5 characters"),
+    password: yup
+      .string()
+      .required("Password is Required")
+      .min(6, "Min 6 characters"),
+  });
+
+  useEffect(() => {
+    schema.isValid(formState).then((val) => {
+      setButtonOff(!val);
+    });
+  }, [formState, schema]);
+
+  const validateChanges = (e) => {
+    yup
+      .reach(schema, e.target.name)
+      .validate(e.target.value)
+      .then((val) => {
+        setErrors({ ...errors, [e.target.name]: "" });
+      })
+      .catch((err) => {
+        setErrors({ ...errors, [e.target.name]: err.errors[0] });
+      });
   };
 
   const onSubmit = (e) => {
@@ -35,13 +71,16 @@ const Login = () => {
     axiosWithAuth()
       .post("/api/auth/login", formState)
       .then((resp) => {
-        history.push('/dashboard')
+        history.push("/dashboard");
         console.log("data response", resp.data);
         setFormState({
           username: "",
           password: "",
         });
-      });
+      })
+      .catch((err) => {
+        console.log("error data", err.data.message)
+      })
   };
 
   return (
@@ -85,7 +124,7 @@ const Login = () => {
           }}
           type="submit"
           data-cy="submit"
-          // disabled={buttonOff}
+          disabled={buttonOff}
         >
           Log In
         </button>
