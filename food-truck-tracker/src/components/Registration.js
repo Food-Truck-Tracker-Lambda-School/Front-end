@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import * as yup from "yup";
-import styled from "styled-components";
-import backImg from "../Images/backGround.png";
-import axiosWithAuth from "../utils/axiosWithAuth";
-import { useHistory } from 'react-router-dom'
-=======
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import backImg from '../Images/backGround.png';
 import axiosWithAuth from '../utils/axiosWithAuth';
->>>>>>> d2cff0e6127d0ea4c532df25eb3a5e8b297adef5
+import { useHistory } from 'react-router-dom';
 
 const ErrorP = styled.p`
 	font-size: 1.2rem;
@@ -38,9 +30,9 @@ const Registration = () => {
 		password: '',
 		terms: false,
 	});
-  
-  const history = useHistory();
-  
+
+	const history = useHistory();
+
 	//button state
 	const [buttonOff, setButtonOff] = useState(true);
 	//errors state
@@ -113,9 +105,7 @@ const Registration = () => {
 	};
 	//onSubmit form function
 	const onSubmit = (e) => {
-		e.prevent
-    
-    ();
+		e.prevent();
 		const { terms, ...postState } = formState;
 		axiosWithAuth()
 			.post('/api/auth/register', postState)
@@ -132,7 +122,7 @@ const Registration = () => {
 				});
 				localStorage.setItem('roleId', res.data.roleId);
 				localStorage.setItem('token', res.data.token);
-        history.push('/dashboard');
+				history.push('/dashboard');
 			})
 			.catch((err) => console.log('error', err.res));
 	};
