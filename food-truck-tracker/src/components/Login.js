@@ -18,6 +18,8 @@ const LogDiv = styled.form`
 	z-index: 2;
 `;
 
+const Login = () => {
+
 	const [formState, setFormState] = useState({
 		username: '',
 		password: '',
