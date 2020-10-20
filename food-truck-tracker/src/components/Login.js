@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 // import axios from "axios";
+<<<<<<< HEAD
 import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import backImg from '../Images/backGround.png';
+=======
+import axiosWithAuth from "../utils/axiosWithAuth";
+import styled from "styled-components";
+import backImg from "../Images/backGround.png";
+import { useHistory } from 'react-router-dom'
+>>>>>>> 4ee467e641419d4218dcb96bf11d38c2e06f2835
 
 const LogDiv = styled.form`
 	width: 400px;
