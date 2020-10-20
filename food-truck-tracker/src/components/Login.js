@@ -79,7 +79,7 @@ const Login = () => {
         });
       })
       .catch((err) => {
-        console.log("error data", err.data.message)
+        console.log("error data", err.response.data.message)
       })
   };
 
