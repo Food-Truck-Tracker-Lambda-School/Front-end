@@ -20,7 +20,7 @@ const initialState = {
 	isFetching: false,
 	error: '',
 	dinerInfo: {
-		dinerId: localStorage.getItem('dinerId'),
+		roleId: localStorage.getItem('roleId'),
 		username: '',
 		email: '',
 		favoriteTrucks: [],
@@ -146,3 +146,5 @@ export const dinerReducer = (state = initialState, action) => {
 			return state;
 	}
 };
+
+export default dinerReducer;
