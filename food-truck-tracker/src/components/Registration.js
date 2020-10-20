@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import styled from "styled-components";
@@ -6,19 +7,19 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
 const ErrorP = styled.p`
-  font-size: 1.2rem;
-  color: red;
+	font-size: 1.2rem;
+	color: red;
 `;
 const RegDiv = styled.form`
-  width: 400px;
-  background: #a10c00;
-  color: white;
-  padding: 2%;
-  position: relative;
-  margin: 2% 15% 15% 30%;
-  border-radius: 10px;
-  overflow: hidden;
-  z-index: 2;
+	width: 400px;
+	background: #a10c00;
+	color: white;
+	padding: 2%;
+	position: relative;
+	margin: 2% 15% 15% 30%;
+	border-radius: 10px;
+	overflow: hidden;
+	z-index: 2;
 `;
 const Registration = () => {
   const history = useHistory();

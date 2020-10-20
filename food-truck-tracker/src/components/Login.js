@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axiosWithAuth from "../utils/axiosWithAuth";
@@ -6,31 +7,32 @@ import backImg from "../Images/backGround.png";
 import { useHistory } from "react-router-dom";
 
 const LogDiv = styled.form`
-  width: 400px;
-  background: #a10c00;
-  color: white;
-  padding: 2%;
-  position: fixed;
-  margin: 2% 15% 15% 30%;
-  border-radius: 10px;
-  overflow: hidden;
-  z-index: 2;
+	width: 400px;
+	background: #a10c00;
+	color: white;
+	padding: 2%;
+	position: fixed;
+	margin: 2% 15% 15% 30%;
+	border-radius: 10px;
+	overflow: hidden;
+	z-index: 2;
 `;
 
-const Login = () => {
-  const history = useHistory();
+	const [formState, setFormState] = useState({
+		username: '',
+		password: '',
+	});
 
-  const [formState, setFormState] = useState({
-    username: "",
-    password: "",
-  });
+	const history = useHistory();
 
+	const onChange = (e) => {
+		setFormState({ ...formState, [e.target.name]: e.target.value });
+	};
   const onChange = (e) => {
-    e.persist();
-    validateChanges(e);
-    setFormState({ ...formState, [e.target.name]: e.target.value });
+      e.persist();
+      validateChanges(e);
+      setFormState({ ...formState, [e.target.name]: e.target.value });
   };
-
   //validation coding below
   const [buttonOff, setButtonOff] = useState(true);
   const [errors, setErrors] = useState({
@@ -47,7 +49,6 @@ const Login = () => {
       .required("Password is Required")
       .min(6, "Min 6 characters"),
   });
-
   useEffect(() => {
     schema.isValid(formState).then((val) => {
       setButtonOff(!val);
@@ -65,18 +66,19 @@ const Login = () => {
         setErrors({ ...errors, [e.target.name]: err.errors[0] });
       });
   };
-
   const onSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()
       .post("/api/auth/login", formState)
       .then((resp) => {
-        history.push("/dashboard");
         console.log("data response", resp.data);
+        localStorage.setItem('roleId', resp.data.roleId);
+			  localStorage.setItem('token', resp.data.token);
         setFormState({
           username: "",
           password: "",
-        });
+          });
+        history.push("/dashboard");
       })
       .catch((err) => {
         const { message } = err.response.data;
