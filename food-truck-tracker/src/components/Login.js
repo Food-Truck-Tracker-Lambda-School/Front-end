@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
 import backImg from "../Images/backGround.png";
+import { useHistory } from 'react-router-dom'
 
 const LogDiv = styled.form`
   width: 400px;
@@ -17,6 +18,9 @@ const LogDiv = styled.form`
 `;
 
 const Login = () => {
+
+  const history = useHistory();
+
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -31,6 +35,7 @@ const Login = () => {
     axiosWithAuth()
       .post("/api/auth/login", formState)
       .then((resp) => {
+        history.push('/dashboard')
         console.log("data response", resp.data);
         setFormState({
           username: "",
