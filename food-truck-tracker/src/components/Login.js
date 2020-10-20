@@ -80,7 +80,8 @@ const Login = () => {
       })
       .catch((err) => {
         const { message } = err.response.data;
-        console.log("error data", message);
+        console.log("error data--->", message);
+        alert(message)
       });
   };
 
