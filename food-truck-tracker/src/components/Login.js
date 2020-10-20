@@ -68,6 +68,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    debugger
     axiosWithAuth()
       .post("/api/auth/login", formState)
       .then((resp) => {
@@ -79,7 +80,8 @@ const Login = () => {
         });
       })
       .catch((err) => {
-        console.log("error data", err.data.message)
+        const { message } = err.response.data
+        console.log("error data", message)
       })
   };
 
