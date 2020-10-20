@@ -105,8 +105,8 @@ const Registration = () => {
 		const { terms, ...postState } = formState;
 		axiosWithAuth()
 			.post('/api/auth/register', postState)
-			.then((response) => {
-				console.log('Data Response', response.data);
+			.then((res) => {
+				console.log('Data Response', res.data);
 				setFormState({
 					roleId: '',
 					name: '',
@@ -116,8 +116,10 @@ const Registration = () => {
 					password: '',
 					terms: false,
 				});
+				localStorage.setItem('roleId', res.data.roleId);
+				localStorage.setItem('token', res.data.token);
 			})
-			.catch((err) => console.log('error', err.response));
+			.catch((err) => console.log('error', err.res));
 	};
 	return (
 		<div>
