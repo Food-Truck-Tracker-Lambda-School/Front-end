@@ -17,15 +17,17 @@ export const DinerDashboard = (props) => {
 			truckName: '',
 			truckImg: '',
 			cuisine: '',
-			customerRating: [0, 0, 0],
+			customerRating: [0, 0, 0, 0],
 			avgRating: 0,
 			menu: [],
 		},
 	});
 
+
+
 	useEffect(() => {
 		props.fetchTruckData();
-		props.fetchDinerInfo(localStorage.getItem('id'));
+		props.fetchDinerInfo(localStorage.getItem('roleId'));
 	}, []);
 
 	useEffect(() => {

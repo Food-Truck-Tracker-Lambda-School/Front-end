@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import backImg from '../Images/backGround.png';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 const LogDiv = styled.form`
 	width: 400px;
@@ -22,7 +22,7 @@ const Login = () => {
 		password: '',
 	});
 
-  const history = useHistory();
+	const history = useHistory();
 
 	const onChange = (e) => {
 		setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -40,6 +40,7 @@ const Login = () => {
 				});
 				localStorage.setItem('roleId', resp.data.roleId);
 				localStorage.setItem('token', resp.data.token);
+				history.push('/dashboard')
 			});
 	};
 
