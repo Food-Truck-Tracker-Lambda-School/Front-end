@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import styled from "styled-components";
 import backImg from "../Images/backGround.png";
-import { device } from "../utils/device";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import { useHistory } from 'react-router-dom'
 
 const ErrorP = styled.p`
   font-size: 1.2rem;
@@ -19,17 +19,11 @@ const RegDiv = styled.form`
   border-radius: 10px;
   overflow: hidden;
   z-index: 2;
- 
-  @media ${device.laptopL} {
-	max-width: 800px
-	margin: auto
-  }
-
-  @media ${device.mobileL}{
-	  max-width: 
-  }
 `;
 const Registration = () => {
+
+  const history = useHistory();
+
   const [formState, setFormState] = useState({
     roleId: "",
     name: "",
@@ -116,7 +110,9 @@ const Registration = () => {
     axiosWithAuth()
       .post("/api/auth/register", postState)
       .then((response) => {
+        history.push('/dashboard')
         console.log("Data Response", response.data);
+
         setFormState({
           roleId: "",
           name: "",
