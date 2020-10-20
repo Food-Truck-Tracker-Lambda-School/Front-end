@@ -105,7 +105,7 @@ const Registration = () => {
 	};
 	//onSubmit form function
 	const onSubmit = (e) => {
-		e.prevent();
+		e.preventDefault();
 		const { terms, ...postState } = formState;
 		axiosWithAuth()
 			.post('/api/auth/register', postState)
