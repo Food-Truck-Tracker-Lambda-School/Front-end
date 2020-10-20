@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axiosWithAuth from "../utils/axiosWithAuth";
@@ -7,30 +6,29 @@ import backImg from "../Images/backGround.png";
 import { useHistory } from "react-router-dom";
 
 const LogDiv = styled.form`
-	width: 400px;
-	background: #a10c00;
-	color: white;
-	padding: 2%;
-	position: fixed;
-	margin: 2% 15% 15% 30%;
-	border-radius: 10px;
-	overflow: hidden;
-	z-index: 2;
+  width: 400px;
+  background: #a10c00;
+  color: white;
+  padding: 2%;
+  position: fixed;
+  margin: 2% 15% 15% 30%;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 2;
 `;
 
 const Login = () => {
+  const [formState, setFormState] = useState({
+    username: "",
+    password: "",
+  });
 
-	const [formState, setFormState] = useState({
-		username: '',
-		password: '',
-	});
-
-	const history = useHistory();
+  const history = useHistory();
 
   const onChange = (e) => {
-      e.persist();
-      validateChanges(e);
-      setFormState({ ...formState, [e.target.name]: e.target.value });
+    e.persist();
+    validateChanges(e);
+    setFormState({ ...formState, [e.target.name]: e.target.value });
   };
   //validation coding below
   const [buttonOff, setButtonOff] = useState(true);
@@ -71,18 +69,18 @@ const Login = () => {
       .post("/api/auth/login", formState)
       .then((resp) => {
         console.log("data response", resp.data);
-        localStorage.setItem('roleId', resp.data.roleId);
-			  localStorage.setItem('token', resp.data.token);
+        localStorage.setItem("roleId", resp.data.roleId);
+        localStorage.setItem("token", resp.data.token);
         setFormState({
           username: "",
           password: "",
-          });
+        });
         history.push("/dashboard");
       })
       .catch((err) => {
         const { message } = err.response.data;
         console.log("error data--->", message);
-        alert(message)
+        alert(message);
       });
   };
 
