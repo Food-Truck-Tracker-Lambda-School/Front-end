@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import styled from "styled-components";
 import backImg from "../Images/backGround.png";
+import { device } from "../utils/device";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const ErrorP = styled.p`
@@ -18,6 +19,15 @@ const RegDiv = styled.form`
   border-radius: 10px;
   overflow: hidden;
   z-index: 2;
+ 
+  @media ${device.laptopL} {
+	max-width: 800px
+	margin: auto
+  }
+
+  @media ${device.mobileL}{
+	  max-width: 
+  }
 `;
 const Registration = () => {
   const [formState, setFormState] = useState({
