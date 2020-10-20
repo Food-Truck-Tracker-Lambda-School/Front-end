@@ -79,8 +79,9 @@ const Login = () => {
         });
       })
       .catch((err) => {
-        console.log("error data", err.response.data.message)
-      })
+        const { message } = err.response.data;
+        console.log("error data", message);
+      });
   };
 
   return (
