@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import {
-	fetchTruckData,
-	fetchDinerInfo,
+	fetchTruckData as ftd,
+	fetchDinerInfo as fdi,
 	addFavoriteTruck,
 	deleteFavoriteTruck,
 	addTruckRating,
 	addMenuRating,
 } from '../../actions/dinerActions';
 
-export const DinerDashboard = (props) => {
+export const DinerDashboard = ({ fetchTruckData, fetchDinerInfo, ...props }) => {
 	const [dinerInfo, setDinerInfo] = useState({
 		visible: false,
 		currentTruck: {
@@ -26,9 +26,9 @@ export const DinerDashboard = (props) => {
 
 
 	useEffect(() => {
-		props.fetchTruckData();
-		props.fetchDinerInfo(localStorage.getItem('roleId'));
-	}, []);
+		fetchTruckData();
+		fetchDinerInfo(localStorage.getItem('roleId'));
+	}, [fetchTruckData, fetchDinerInfo]);
 
 	useEffect(() => {
 		if (dinerInfo.visible) {
@@ -40,7 +40,7 @@ export const DinerDashboard = (props) => {
 				currentTruck: temp[0],
 			});
 		}
-	}, [props.trucks]);
+	}, [props.trucks, dinerInfo]);
 
 	return <div></div>;
 };
@@ -54,8 +54,8 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-	fetchTruckData,
-	fetchDinerInfo,
+	fetchTruckData: ftd,
+	fetchDinerInfo: fdi,
 	addFavoriteTruck,
 	deleteFavoriteTruck,
 	addTruckRating,
