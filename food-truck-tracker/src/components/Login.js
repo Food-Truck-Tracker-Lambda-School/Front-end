@@ -1,23 +1,8 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-// import axios from "axios";
-<<<<<<< HEAD
-import axiosWithAuth from '../utils/axiosWithAuth';
-import styled from 'styled-components';
-import backImg from '../Images/backGround.png';
-=======
-import axiosWithAuth from "../utils/axiosWithAuth";
-import styled from "styled-components";
-import backImg from "../Images/backGround.png";
-import { useHistory } from 'react-router-dom'
->>>>>>> 4ee467e641419d4218dcb96bf11d38c2e06f2835
-=======
-
 import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import backImg from '../Images/backGround.png';
 import { useHistory } from 'react-router-dom'
->>>>>>> d2cff0e6127d0ea4c532df25eb3a5e8b297adef5
 
 const LogDiv = styled.form`
 	width: 400px;
@@ -32,19 +17,12 @@ const LogDiv = styled.form`
 `;
 
 const Login = () => {
-<<<<<<< HEAD
-=======
-
->>>>>>> d2cff0e6127d0ea4c532df25eb3a5e8b297adef5
 	const [formState, setFormState] = useState({
 		username: '',
 		password: '',
 	});
-<<<<<<< HEAD
-=======
 
   const history = useHistory();
->>>>>>> d2cff0e6127d0ea4c532df25eb3a5e8b297adef5
 
 	const onChange = (e) => {
 		setFormState({ ...formState, [e.target.name]: e.target.value });
