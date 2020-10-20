@@ -45,8 +45,9 @@ export const DinerDashboard = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		userInfo: state.diner.userInfo,
-		trucks: state.diner.trucks,
+		roleId: state.dinerInfo.roleId,
+		userInfo: state.dinerInfo.userInfo,
+		trucks: state.dinerInfo.trucks,
 	};
 };
 
