@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-// import axios from "axios";
+
 import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import backImg from '../Images/backGround.png';
+import { useHistory } from 'react-router-dom'
 
 const LogDiv = styled.form`
 	width: 400px;
@@ -17,10 +18,13 @@ const LogDiv = styled.form`
 `;
 
 const Login = () => {
+
 	const [formState, setFormState] = useState({
 		username: '',
 		password: '',
 	});
+
+  const history = useHistory();
 
 	const onChange = (e) => {
 		setFormState({ ...formState, [e.target.name]: e.target.value });
