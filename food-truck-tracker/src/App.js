@@ -20,6 +20,10 @@ function App() {
         <Route path='/login' render={() => <Login /> }/>
         <Route exact path='/' render={() => <HomePage />} />
         <PrivateRoute exact path='/dashboard' roleId={roleId} />
+
+        {/* <Route path="/operator">
+          <OperatorProfileHome/>
+        </Route> */}
       </Switch>
     </>
   );
