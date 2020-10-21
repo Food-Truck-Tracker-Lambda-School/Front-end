@@ -4,7 +4,11 @@ import { DinerDashboard } from '../components/diner/DinerDashboard';
 import OperatorProfileHome  from '../components/operator/OperatorProfileHome';
 
 const PrivateRoute = ({ roleId, ...rest }) => {
+<<<<<<< HEAD
 	Component = roleId === 1 ? DinerDashboard : OperatorProfileHome;
+=======
+	Component = roleId === 1 ? DinerDashboard : /*OperatorProfileHome*/ DinerDashboard;
+>>>>>>> 05ed04c3a5f7a4e5cb83b7a7e0bc0ab0c44dae48
 
 	return (
 		<Route
@@ -14,7 +18,7 @@ const PrivateRoute = ({ roleId, ...rest }) => {
 			}
 		/>
 	);
-	
+
 };
 
 export default PrivateRoute;
