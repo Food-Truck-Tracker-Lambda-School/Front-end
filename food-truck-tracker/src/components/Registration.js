@@ -9,17 +9,25 @@ const ErrorP = styled.p`
   font-size: 1.2rem;
   color: red;
 `;
+
+const ContDiv = styled.div`
+  display: flex;
+  flex-direction: row-reversed;
+  @media (max-width: 1050px) {
+    flex-direction: column;
+    margin: 5% 30% 30% 15%;
+    height: 20vh;
+  }
+`;
 const RegDiv = styled.form`
-  width: 400px;
+  height: 30vh;
+  margin: 10% 10% 10% 10%;
   background: #a10c00;
   color: white;
   padding: 2%;
-  position: relative;
-  margin: 10% 15% 15% 55%;
   border-radius: 10px;
-  overflow: hidden;
-  z-index: 2;
 `;
+
 const Registration = () => {
   const history = useHistory();
 
@@ -128,7 +136,7 @@ const Registration = () => {
       });
   };
   return (
-    <div>
+    <ContDiv>
       <RegDiv onSubmit={onSubmit}>
         <label htmlFor="roleId">
           <select
@@ -271,11 +279,11 @@ const Registration = () => {
           left: "0",
           top: "5rem",
           opacity: "1",
-          zIndex: 1,
-          position: "absolute",
+          // zIndex: 1,
+          // position: "absolute",
         }}
       />
-    </div>
+    </ContDiv>
   );
 };
 export default Registration;
