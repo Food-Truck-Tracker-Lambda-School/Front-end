@@ -135,8 +135,8 @@ const Registration = () => {
             onChange={onChange}
           >
             <option value="">---Choose One---</option>
-            <option value="1">Chef / Truck Owner</option>
-            <option value="2">Foodie / Hungry Person</option>
+            <option value="2">Chef / Truck Owner</option>
+            <option value="1">Foodie / Hungry Person</option>
           </select>
           {errors.roleId.length > 0 ? (
             <ErrorP style={{ color: "red" }}>{errors.roleId}</ErrorP>
