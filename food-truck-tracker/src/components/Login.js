@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
-import backImg from "../Images/backGround.png";
+import backImg from "../Images/LOGO Light Mode.jpg";
 import { useHistory } from "react-router-dom";
 
 const ErrorP = styled.p`
@@ -16,7 +16,7 @@ const LogDiv = styled.form`
   color: white;
   padding: 2%;
   position: fixed;
-  margin: 2% 15% 15% 30%;
+  margin: 10% 15% 15% 55%;
   border-radius: 10px;
   overflow: hidden;
   z-index: 2;
@@ -145,11 +145,11 @@ const Login = () => {
         src={backImg}
         alt="food Truck"
         style={{
-          width: "99vw",
-          height: "88vh",
+          width: "50vw",
+          height: "90vh",
           left: "0",
           top: "5rem",
-          opacity: "0.6",
+          opacity: "1",
           zIndex: 1,
           position: "absolute",
         }}

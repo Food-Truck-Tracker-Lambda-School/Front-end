@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import styled from "styled-components";
-import backImg from "../Images/backGround.png";
+import backImg from "../Images/LOGO Light Mode.jpg";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
@@ -15,7 +15,7 @@ const RegDiv = styled.form`
   color: white;
   padding: 2%;
   position: relative;
-  margin: 2% 15% 15% 30%;
+  margin: 10% 15% 15% 55%;
   border-radius: 10px;
   overflow: hidden;
   z-index: 2;
@@ -121,7 +121,11 @@ const Registration = () => {
           terms: false,
         });
       })
-      .catch((err) => console.log("error", err.response));
+      .catch((err) => {
+        const { message } = err.response.data;
+        console.log("error data--->", message);
+        alert("Username already exists. Please choose another");
+      });
   };
   return (
     <div>
@@ -262,11 +266,11 @@ const Registration = () => {
         src={backImg}
         alt="food Truck"
         style={{
-          width: "99vw",
-          height: "87vh",
+          width: "50vw",
+          height: "90vh",
           left: "0",
           top: "5rem",
-          opacity: "0.6",
+          opacity: "1",
           zIndex: 1,
           position: "absolute",
         }}
