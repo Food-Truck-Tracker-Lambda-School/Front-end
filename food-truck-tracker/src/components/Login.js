@@ -5,6 +5,11 @@ import styled from "styled-components";
 import backImg from "../Images/backGround.png";
 import { useHistory } from "react-router-dom";
 
+const ErrorP = styled.p`
+  font-size: 1.2rem;
+  color: red;
+`;
+
 const LogDiv = styled.form`
   width: 400px;
   background: #a10c00;
@@ -98,6 +103,9 @@ const Login = () => {
             onChange={onChange}
           />
           User Name
+          {errors.username.length > 0 ? (
+            <ErrorP style={{ color: "red" }}>{errors.username}</ErrorP>
+          ) : null}
         </label>
         <label htmlFor="password">
           <input
@@ -110,6 +118,9 @@ const Login = () => {
             onChange={onChange}
           />
           Password
+          {errors.password.length > 0 ? (
+            <ErrorP style={{ color: "red" }}>{errors.password}</ErrorP>
+          ) : null}
         </label>{" "}
         <br />
         <button
