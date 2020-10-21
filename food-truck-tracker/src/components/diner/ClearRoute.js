@@ -21,10 +21,13 @@ export const ClearRoute = (props) => {
             <div>
                 <Typography variant='h3' component='h4' style={{color: 'red', marginLeft: 20, marginRight: 20}}>
                     This is your current route
+                    <Typography variant='subtitle1'>
+                        Route from Current Location to {props.destination.truckName}
+                    </Typography>
                 </Typography>
-                <br />
-                <h2
             </div>
+
+            
         </ClearRouteSegmentStyle>
         ) : null
     )

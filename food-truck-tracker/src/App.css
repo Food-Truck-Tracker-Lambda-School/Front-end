@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+h3 {
+  margin: 2% 0 2% 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +39,64 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.operator-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.operator-trucks{
+  margin: 10% auto;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.truck-card{
+    width: 30%;
+    margin: 2% 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: #f99212;
+    color: white;
+}
+
+.truck-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 2px solid black;
+    margin: 2%;
+}
+
+.btn {
+
+  width: 150px;
+  display: inline-block;
+  padding: 8px 11px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
+  background-color: #4dd0e1;
+  background-image: linear-gradient(to right, #4dd0e1, #1ee7e2);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.operator-truck{
+  background-color: #98a5a8;
+}
+
+.delete-icon{
+  margin-left:20px;
 }

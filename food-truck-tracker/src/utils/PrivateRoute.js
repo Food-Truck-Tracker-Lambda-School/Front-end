@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { DinerDashboard } from '../components/diner/DinerDashboard';
-// import { OperatorProfileHome } from '../components/owner/OperatorProfileHome';
+import OperatorProfileHome from '../components/operator/OperatorProfileHome';
 
 const PrivateRoute = ({ roleId, ...rest }) => {
-	Component = roleId === 1 ? DinerDashboard : /*OperatorProfileHome*/ DinerDashboard;
+	debugger
+	const Component = roleId === 1 ? DinerDashboard : OperatorProfileHome;
 
 	return (
 		<Route
