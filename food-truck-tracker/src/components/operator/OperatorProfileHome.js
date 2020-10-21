@@ -52,7 +52,7 @@ const mockStateData = {
   },
 };
 
-class OperatorHomeProfile extends Component {
+class OperatorProfileHome extends Component {
   constructor() {
     super();
     this.state = {
@@ -120,4 +120,4 @@ class OperatorHomeProfile extends Component {
   }
 }
 
-export default OperatorHomeProfile;
+export default OperatorProfileHome;
