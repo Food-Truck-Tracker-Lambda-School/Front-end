@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch , Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import PrivateRoute from './utils/PrivateRoute';
 import './App.css';
 import Registration from './components/Registration';
@@ -16,10 +16,10 @@ function App() {
     <>
       <Navigation />
       <Switch>
-        <Route path='/registration' render={() =><Registration /> }/>
-        <Route path='/login' render={() => <Login /> }/>
+        <Route path='/registration' render={() => <Registration />} />
+        <Route path='/login' render={() => <Login />} />
         <Route exact path='/' render={() => <HomePage />} />
-        <PrivateRoute exact path='/dashboard' roleId={roleId} />
+        <PrivateRoute exact path='/dashboard' roleId={localStorage.getItem('roleId')} />
 
         {/* <Route path="/operator">
           <OperatorProfileHome/>
