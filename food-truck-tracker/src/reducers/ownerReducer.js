@@ -14,7 +14,7 @@ const initialState = {
 	error: '',
 	ownerInfo: {
 		// ownerInfo might be different based on user designation as diner or owner...
-		ownerId: localStorage.getItem('ownerId'), // may not need a separate designation at all, maybe just userId
+		roleId: localStorage.getItem('roleId'), // may not need a separate designation at all, maybe just userId
 		username: '',
 		email: '',
 		trucksOwned: [{ customerRatings: [2, 3, 4] }],
