@@ -4,7 +4,6 @@ import PrivateRoute from './utils/PrivateRoute';
 import './App.css';
 import Registration from './components/Registration';
 import Login from './components/Login'
-import HomePage from './components/HomePage';
 import Navigation from './components/Navigation';
 import roleId from './reducers/dinerReducer';
 
