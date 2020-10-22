@@ -5,6 +5,8 @@ import styled from "styled-components";
 import backImg from "../Images/LOGO Light Mode.jpg";
 import { useHistory } from "react-router-dom";
 
+const LogoImg = styled.div``;
+
 const ErrorP = styled.p`
   font-size: 1.2rem;
   color: red;
@@ -13,22 +15,27 @@ const ErrorP = styled.p`
 const ContDiv = styled.div`
   display: flex;
   flex-direction: row-reversed;
-  @media (max-width: 1050px) {
+  @media (max-width: 1380px) {
     flex-direction: column;
-    margin: 5% 30% 30% 15%;
+    margin: 5% 15% 30% 20%;
     height: 20vh;
   }
 `;
 
 const LogDiv = styled.form`
   height: 15vh;
-  background: #F97F0A;
+  background: #f97f0a;
   color: white;
   padding: 2%;
-  // position: fixed;
-  margin: 10% 10% 10% 10%;
   border-radius: 10px;
+  width: 300px;
+`;
 
+const ContLogDiv = styled.div`
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Login = () => {
@@ -60,12 +67,14 @@ const Login = () => {
       .required("Password is Required")
       .min(6, "Min 6 characters"),
   });
+
   useEffect(() => {
     schema.isValid(formState).then((val) => {
       setButtonOff(!val);
     });
   }, [formState, schema]);
 
+  
   const validateChanges = (e) => {
     yup
       .reach(schema, e.target.name)
@@ -100,69 +109,71 @@ const Login = () => {
 
   return (
     <ContDiv>
-      <LogDiv onSubmit={onSubmit}>
-        <label htmlFor="username">
-          <input
-            id="username"
-            name="username"
-            data-cy="username"
-            type="text"
-            placeholder="Enter User Name"
-            value={formState.username}
-            onChange={onChange}
-          />
-          User Name
-          {errors.username.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.username}</ErrorP>
-          ) : null}
-        </label>
-        <label htmlFor="password">
-          <input
-            id="password"
-            name="password"
-            data-cy="password"
-            type="password"
-            placeholder="Enter Password"
-            value={formState.password}
-            onChange={onChange}
-          />
-          Password
-          {errors.password.length > 0 ? (
-            <ErrorP style={{ color: "red" }}>{errors.password}</ErrorP>
-          ) : null}
-        </label>{" "}
-        <br />
-        <button
+      <ContLogDiv>
+        <LogDiv onSubmit={onSubmit}>
+          <label htmlFor="username">
+            <input
+              id="username"
+              name="username"
+              data-cy="username"
+              type="text"
+              placeholder="Enter User Name"
+              value={formState.username}
+              onChange={onChange}
+            />
+            User Name
+            {errors.username.length > 0 ? (
+              <ErrorP style={{ color: "red" }}>{errors.username}</ErrorP>
+            ) : null}
+          </label>
+          <label htmlFor="password">
+            <input
+              id="password"
+              name="password"
+              data-cy="password"
+              type="password"
+              placeholder="Enter Password"
+              value={formState.password}
+              onChange={onChange}
+            />
+            Password
+            {errors.password.length > 0 ? (
+              <ErrorP style={{ color: "red" }}>{errors.password}</ErrorP>
+            ) : null}
+          </label>{" "}
+          <br />
+          <button
+            style={{
+              background: "#000000",
+              color: "#F97F0A",
+              borderRadius: "8px",
+              width: "150px",
+              height: "30px",
+              fontSize: "1.2rem",
+              border: "none",
+              marginTop: "2%",
+            }}
+            type="submit"
+            data-cy="submit"
+            disabled={buttonOff}
+          >
+            Log In
+          </button>
+        </LogDiv>
+      </ContLogDiv>
+      <LogoImg>
+        <img
+          src={backImg}
+          alt="food Truck"
           style={{
-            background: "#000000",
-            color: "#F97F0A",
-            borderRadius: "8px",
-            width: "150px",
-            height: "30px",
-            fontSize: "1.2rem",
-            border: "none",
-            marginTop: "2%",
+            width: "650px",
+            height: "90vh",
+            left: "0",
+            top: "5rem",
+            opacity: "1",
           }}
-          type="submit"
-          data-cy="submit"
-          disabled={buttonOff}
-        >
-          Log In
-        </button>
-      </LogDiv>
-      <img
-        src={backImg}
-        alt="food Truck"
-        style={{
-          width: "50vw",
-          height: "90vh",
-          left: "0",
-          top: "5rem",
-          opacity: "1",
-          // zIndex: 1,
-          // position: "absolute",
-        }}
-      />
+        />
+      </LogoImg>
     </ContDiv>
   );
 };

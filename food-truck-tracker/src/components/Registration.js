@@ -85,11 +85,13 @@ const Registration = () => {
       .min(6, "Min 6 characters"),
     terms: yup.boolean().oneOf([true], "Please agree to T&C's"),
   });
+    //turn button on here if schema is valid
   useEffect(() => {
     schema.isValid(formState).then((val) => {
       setButtonOff(!val);
     });
   }, [formState, schema]);
+    //validate schema here
   const validateChanges = (e) => {
     yup
       .reach(schema, e.target.name)
