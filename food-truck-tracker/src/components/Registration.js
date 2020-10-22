@@ -22,7 +22,7 @@ const ContDiv = styled.div`
 const RegDiv = styled.form`
   height: 30vh;
   margin: 10% 10% 10% 10%;
-  background: #a10c00;
+  background: #F97F0A;
   color: white;
   padding: 2%;
   border-radius: 10px;
@@ -254,8 +254,8 @@ const Registration = () => {
         <br></br>
         <button
           style={{
-            background: "#F9AE0a",
-            color: "#A10E00",
+            background: "#000000",
+            color: "#F97F0A",
             borderRadius: "8px",
             width: "150px",
             height: "30px",

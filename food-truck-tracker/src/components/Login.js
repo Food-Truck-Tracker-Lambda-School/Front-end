@@ -22,7 +22,7 @@ const ContDiv = styled.div`
 
 const LogDiv = styled.form`
   height: 15vh;
-  background: #a10c00;
+  background: #F97F0A;
   color: white;
   padding: 2%;
   // position: fixed;
@@ -134,8 +134,8 @@ const Login = () => {
         <br />
         <button
           style={{
-            background: "#F9AE0a",
-            color: "#A10E00",
+            background: "#000000",
+            color: "#F97F0A",
             borderRadius: "8px",
             width: "150px",
             height: "30px",
