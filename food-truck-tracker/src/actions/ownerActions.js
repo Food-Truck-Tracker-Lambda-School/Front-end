@@ -1,8 +1,8 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-export const FETCHING_OPERATOR_START = 'FETCHING_OPERATOR_START';
-export const FETCHING_OPERATOR_SUCCESS = 'FETCHING_OPERATOR_SUCCESS';
-export const FETCHING_OPERATOR_FAIL = 'FETCHING_OPERATOR_FAIL';
+export const FETCHING_OWNERS_START = 'FETCHING_OWNERS_START';
+export const FETCHING_OWNERS_SUCCESS = 'FETCHING_OWNERS_SUCCESS';
+export const FETCHING_OWNERS_FAIL = 'FETCHING_OWNERS_FAIL';
 export const SET_OWNER_INFO = 'SET_OWNER_INFO';
 export const FETCHING_TRUCKS_START = 'FETCHING_TRUCKS_START';
 export const FETCHING_TRUCKS_SUCCESS = 'FETCHING_TRUCKS_SUCCESS';
@@ -16,14 +16,14 @@ export const REMOVE_MENUITEM = 'REMOVE_MENUITEM';
 
 // This function will fetch truck owner info from DB
 export const fetchOwnerData = (id) => (dispatch) => {
-	dispatch({ type: FETCHING_OPERATOR_START });
+	dispatch({ type: FETCHING_OWNERS_START });
 
 	axiosWithAuth()
-		.get(`/api/operator/${id}`)
+		.get(`/api/owners/${id}`)
 		.then((res) => {
 			console.log('pl: actions.js: fetchOwnerData: axios get: results: ', res);
 			dispatch({
-				type: FETCHING_OPERATOR_SUCCESS,
+				type: FETCHING_OWNERS_SUCCESS,
 				payload: res.data,
 			});
 		})
@@ -32,14 +32,14 @@ export const fetchOwnerData = (id) => (dispatch) => {
 				'pl: actions.js: fetchOwnerData: axios get failure: res: ',
 				err.message
 			);
-			dispatch({ type: FETCHING_OPERATOR_FAIL, payload: err.message });
+			dispatch({ type: FETCHING_OWNERS_FAIL, payload: err.message });
 		});
 };
 
 // Adds a new truck to the owner database
-export const addTruck = (id, addTruck) => (dispatch) => {
+export const addTruck = (addTruck) => (dispatch) => {
 	axiosWithAuth()
-		.post(`/api/operator/${id}/trucks`, addTruck)
+		.post('/api/trucks', addTruck)
 		.then((res) => {
 			console.log('pl: actions.js: addTruck: axios post: results: ', res);
 			dispatch({
@@ -53,9 +53,9 @@ export const addTruck = (id, addTruck) => (dispatch) => {
 };
 
 // Will allow owner to update truck info
-export const updateTruck = (id, truckId, selectTruck) => (dispatch) => {
+export const updateTruck = (truckId, selectTruck) => (dispatch) => {
 	axiosWithAuth()
-		.put(`/api/operator/${id}/trucks/${truckId}`, selectTruck)
+		.put(`/api/trucks/${truckId}`, selectTruck)
 		.then((res) => {
 			console.log('pl: actions.js: updateTruck: axios put: res');
 			dispatch({
@@ -72,9 +72,9 @@ export const updateTruck = (id, truckId, selectTruck) => (dispatch) => {
 };
 
 // Allows owner to delete truck from db
-export const removeTruck = (id, truckId, selectTruck) => (dispatch) => {
+export const removeTruck = (id, selectTruck) => (dispatch) => {
 	axiosWithAuth()
-		.delete(`/api/operator/${id}/trucks/${truckId}`, selectTruck)
+		.delete(`/api/trucks/${id}`, selectTruck)
 		.then((res) => {
 			console.log(
 				'pl: actions.js: removeTruck: axios delete success: results: ',
@@ -91,9 +91,9 @@ export const removeTruck = (id, truckId, selectTruck) => (dispatch) => {
 };
 
 // Allows owner to add new items to menu
-export const addMenuItem = (id, truckId, menuItem) => (dispatch) => {
+export const addMenuItem = (id, menuItem) => (dispatch) => {
 	axiosWithAuth()
-		.post(`/api/operator/${id}/trucks/${truckId}/menu`, menuItem)
+		.post(`/api/trucks/${id}/menu`, menuItem)
 		.then((res) => {
 			console.log(
 				'pl: actions.js: addMenuItem: axios post success: results: ',
@@ -114,7 +114,7 @@ export const updateMenuItem = (truckId, menuItemId, selectItem) => (
 	dispatch
 ) => {
 	axiosWithAuth()
-		.put(`/api/operator/${id}/trucks/${truckId}/menu/${menuItemId}`, selectItem)
+		.put(`/api/trucks/${truckId}/menu/${menuItemId}`, selectItem)
 		.then((res) => {
 			console.log(
 				'pl: actions.js: updateMenuItem: axios put success: res: ',
@@ -131,9 +131,9 @@ export const updateMenuItem = (truckId, menuItemId, selectItem) => (
 };
 
 // Allows owner to delete menu items
-export const removeMenuItem = (id, truckId, menuItemId) => (dispatch) => {
+export const removeMenuItem = (truckId, menuItemId) => (dispatch) => {
 	axiosWithAuth()
-		.delete(`/api/operator/${id}/trucks/${truckId}/menu/${menuItemId}`)
+		.delete(`/api/trucks/${truckId}/menu/${menuItemId}`)
 		.then((res) => {
 			console.log('delete successful', res);
 			dispatch({
