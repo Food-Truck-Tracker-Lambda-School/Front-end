@@ -16,7 +16,7 @@ function App() {
       <Switch>
         <Route path='/registration' render={() =><Registration /> }/>
         <Route path='/login' render={() => <Login /> }/>
-        <Route exact path='/' render={() => <HomePage />} />
+        <Route exact path='/' render={() => <Login />} />
         <PrivateRoute exact path='/dashboard' roleId={roleId} />
       </Switch>
     </>

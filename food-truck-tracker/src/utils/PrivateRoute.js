@@ -4,7 +4,7 @@ import { DinerDashboard } from '../components/diner/DinerDashboard';
 // import { OperatorProfileHome } from '../components/owner/OperatorProfileHome';
 
 const PrivateRoute = ({ roleId, ...rest }) => {
-	Component = roleId === 1 ? DinerDashboard : /*OperatorProfileHome*/ DinerDashboard;
+	const Component = localStorage.getItem('roleID') === 1 ? DinerDashboard : /*OperatorProfileHome*/ DinerDashboard;
 
 	return (
 		<Route
