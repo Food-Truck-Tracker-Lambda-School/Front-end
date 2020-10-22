@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import MapContainer from './MapContainer';
+import SideBar from './SideBar';
+import ClearRoute from './ClearRoute';
 
 import {
 	fetchTruckData as ftd,
@@ -10,9 +13,14 @@ import {
 	addMenuRating,
 } from '../../actions/dinerActions';
 
-export const DinerDashboard = ({ fetchTruckData, fetchDinerInfo, ...props }) => {
+export const DinerDashboard = ({
+	fetchTruckData,
+	fetchDinerInfo,
+	...props
+}) => {
 	const [infoWindow, setInfoWindow] = useState({
 		visible: false,
+		position: {},
 		currentTruck: {
 			truckName: '',
 			truckImg: '',
@@ -20,12 +28,14 @@ export const DinerDashboard = ({ fetchTruckData, fetchDinerInfo, ...props }) => 
 			customerRating: [0, 0, 0, 0],
 			avgRating: 0,
 			menu: [],
+			currentLocation: ''
 		},
 	});
 
-	// const RecenterMap = (location) => {
-	// 	setMapCenter(location);
-	// }
+	const [destination, setDestination] = useState(null);
+	const [milesRadius, setMilesRadius] = useState(1);
+	const [mapCenter, setMapCenter] = useState({});
+	const [myLocation, setMyLocation] = useState('');
 
 	useEffect(() => {
 		fetchTruckData();
@@ -44,16 +54,54 @@ export const DinerDashboard = ({ fetchTruckData, fetchDinerInfo, ...props }) => 
 		}
 	}, [props.trucks, infoWindow]);
 
+	const RecenterMap = (location) => {
+		setMapCenter(location);
+	};
+
 	return (
-		<div></div>
+		<>
+			<ClearRoute
+				destination={destination}
+				setDestination={setDestination}
+				RecenterMap={RecenterMap}
+				myLocation={myLocation}
+			/>
+			<SideBar
+				infoWindow={infoWindow}
+				setInfoWindow={setInfoWindow}
+				destination={destination}
+				setDestination={setDestination}
+				trucks={props.trucks}
+				dinerInfo={props.dinerInfo}
+				milesRadius={milesRadius}
+				setMilesRadius={setMilesRadius}
+				RecenterMap={RecenterMap}
+				myLocation={myLocation}
+				addFavoriteTruck={props.addFavoriteTruck}
+				deleteFavoriteTruck={props.deleteFavoriteTruck}
+				addTruckRating={props.addTruckRating}
+				addMenuRating={props.addMenuRating}
+			/>
+			<MapContainer
+				infoWindow={infoWindow}
+				setInfoWindow={setInfoWindow}
+				destination={destination}
+				trucks={props.trucks}
+				dinerInfo={props.dinerInfo}
+				milesRadius={milesRadius}
+				mapCenter={mapCenter}
+				setMapCenter={setMapCenter}
+				myLocation={myLocation}
+				setMyLocation={setMyLocation}
+			/>
+		</>
 	);
 };
 
 const mapStateToProps = (state) => {
 	return {
-		roleId: state.dinerInfo.roleId,
-		userInfo: state.dinerInfo.userInfo,
-		trucks: state.dinerInfo.trucks,
+		dinerInfo: state.dinerInfo,
+		trucks: state.trucks,
 	};
 };
 

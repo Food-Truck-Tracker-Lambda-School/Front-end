@@ -110,7 +110,7 @@ export const addMenuItem = (id, truckId, menuItem) => (dispatch) => {
 };
 
 // Allows owner to edit and update menu items
-export const updateMenuItem = (truckId, menuItemId, selectItem) => (
+export const updateMenuItem = (id, truckId, menuItemId, selectItem) => (
 	dispatch
 ) => {
 	axiosWithAuth()

@@ -156,7 +156,7 @@ export const addTruckRating = (truckId, id, customerRating) => (dispatch) => {
 };
 
 // Allows user to rate items on the truck's menu
-export const addMenuRating = (truckId, customerRating) => (
+export const addMenuRating = (truckId, menuItemId, customerRating) => (
 	dispatch
 ) => {
 	axiosWithAuth()

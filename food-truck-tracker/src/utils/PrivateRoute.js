@@ -4,7 +4,6 @@ import { DinerDashboard } from '../components/diner/DinerDashboard';
 import OperatorProfileHome from '../components/operator/OperatorProfileHome';
 
 const PrivateRoute = ({ roleId, ...rest }) => {
-	debugger
 	const Component = roleId === 1 ? DinerDashboard : OperatorProfileHome;
 
 	return (

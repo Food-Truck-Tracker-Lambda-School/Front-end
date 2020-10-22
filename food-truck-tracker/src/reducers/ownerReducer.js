@@ -1,7 +1,7 @@
 import {
-	FETCHING_OWNERS_START,
-	FETCHING_OWNERS_SUCCESS,
-	FETCHING_OWNERS_FAIL,
+	FETCHING_OPERATOR_START,
+	FETCHING_OPERATOR_SUCCESS,
+	FETCHING_OPERATOR_FAIL,
 	ADD_TRUCK,
 	UPDATE_TRUCK,
 	REMOVE_TRUCK,
@@ -12,51 +12,59 @@ import {
 const initialState = {
 	isFetching: false,
 	error: '',
-	ownerInfo: {
-		// ownerInfo might be different based on user designation as diner or owner...
-		roleId: localStorage.getItem('roleId'), // may not need a separate designation at all, maybe just userId
+	operator: {
 		username: '',
+		id: 0,
 		email: '',
-		trucksOwned: [{ customerRatings: [2, 3, 4] }],
+		trucks: [
+			{
+				truckId: localStorage.getItem('roleId'),
+				imageUrl: '',
+				cuisine: '',
+				ratings: [],
+				currentLocation: '',
+				departureTime: '',
+			},
+		],
 	},
 };
 
 export const ownerReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case FETCHING_OWNERS_START: // Initializes fetching state. Will we have a loading icon?
+		case FETCHING_OPERATOR_START: // Initializes fetching state. Will we have a loading icon?
 			return {
 				...state,
 				isFetching: true,
 			};
 
-		case FETCHING_OWNERS_SUCCESS: // returns owner info on successful axios call
+		case FETCHING_OPERATOR_SUCCESS: // returns owner info on successful axios call
 			return {
 				...state,
 				isFetching: false,
-				ownerInfo: action.payload,
+				operator: action.payload,
 				error: '',
 			};
 
-		case FETCHING_OWNERS_FAIL: // returns error status on failure
+		case FETCHING_OPERATOR_FAIL: // returns error status on failure
 			return {
 				...state,
 				isFetching: false,
 				error: action.payload,
 			};
 
-		case ADD_TRUCK: // appends a new truck to owners trucks array
+		case ADD_TRUCK: // appends a new truck to OPERATOR trucks array
 			return {
 				...state,
-				ownerInfo: state.ownerId,
-				trucksOwned: [...state.ownerInfo.trucksOwned, action.payload],
+				operator: state.operator,
+				trucks: [...state.operator.trucks, action.payload],
 			};
 
 		case UPDATE_TRUCK: // allows owner to edit properties of existing truck
 			return {
 				...state,
-				ownerInfo: {
-					...state.ownerInfo,
-					trucksOwned: state.ownerInfo.trucksOwned.map((truck) => {
+				operator: {
+					...state.operator,
+					trucks: state.operator.trucks.map((truck) => {
 						return truck.id === action.payload.id ? action.payload : truck;
 					}),
 				},
@@ -65,9 +73,9 @@ export const ownerReducer = (state = initialState, action) => {
 		case REMOVE_TRUCK: // allows owner to delete an existing truck
 			return {
 				...state,
-				ownerInfo: {
-					...state.ownerInfo,
-					trucksOwned: state.ownerInfo.trucksOwned.filter((truck) => {
+				operator: {
+					...state.operator,
+					trucks: state.operator.trucks.filter((truck) => {
 						return truck.id !== action.payload;
 					}),
 				},
@@ -76,8 +84,8 @@ export const ownerReducer = (state = initialState, action) => {
 		case ADD_MENUITEM: // owner can add a new item to their menu
 			return {
 				...state,
-				ownerInfo: {
-					...state.ownerInfo.trucksOwned.map((truck) => {
+				operator: {
+					...state.operator.trucks.map((truck) => {
 						let temp = truck;
 						if (truck.id === action.payload.truckId) {
 							temp.menu = [...temp.menu, action.payload.data];
@@ -90,9 +98,9 @@ export const ownerReducer = (state = initialState, action) => {
 		case REMOVE_MENUITEM: // owner can remove an item from their menu
 			return {
 				...state,
-				ownerInfo: {
-					...state.ownerInfo,
-					trucksOwned: state.ownerInfo.trucksOwned.map((truck) => {
+				operator: {
+					...state.operator,
+					trucks: state.operator.trucks.map((truck) => {
 						let temp = truck;
 						if (truck.id === action.payload.truckId) {
 							temp.menu = truck.menu.filter((menu) => {
