@@ -92,7 +92,7 @@ const Login = () => {
         history.push("/dashboard");
       })
       .catch((err) => {
-        const { message } = err.message;
+        const { message } = err.response.data;
         console.log("error data--->", message);
         alert(message);
       });

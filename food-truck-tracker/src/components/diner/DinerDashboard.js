@@ -11,7 +11,7 @@ import {
 } from '../../actions/dinerActions';
 
 export const DinerDashboard = ({ fetchTruckData, fetchDinerInfo, ...props }) => {
-	const [infoWindow, setInfoWindow] = useState({
+	const [dinerInfo, setDinerInfo] = useState({
 		visible: false,
 		currentTruck: {
 			truckName: '',
@@ -23,9 +23,7 @@ export const DinerDashboard = ({ fetchTruckData, fetchDinerInfo, ...props }) => 
 		},
 	});
 
-	// const RecenterMap = (location) => {
-	// 	setMapCenter(location);
-	// }
+
 
 	useEffect(() => {
 		fetchTruckData();
@@ -33,20 +31,18 @@ export const DinerDashboard = ({ fetchTruckData, fetchDinerInfo, ...props }) => 
 	}, [fetchTruckData, fetchDinerInfo]);
 
 	useEffect(() => {
-		if (infoWindow.visible) {
+		if (dinerInfo.visible) {
 			let temp = props.trucks.filter((truck) => {
-				return truck.id === infoWindow.currentTruck.id;
+				return truck.id === dinerInfo.currentTruck.id;
 			});
-			setInfoWindow({
-				...infoWindow,
+			setDinerInfo({
+				...dinerInfo,
 				currentTruck: temp[0],
 			});
 		}
-	}, [props.trucks, infoWindow]);
+	}, [props.trucks, dinerInfo]);
 
-	return (
-		<div></div>
-	);
+	return <div></div>;
 };
 
 const mapStateToProps = (state) => {
