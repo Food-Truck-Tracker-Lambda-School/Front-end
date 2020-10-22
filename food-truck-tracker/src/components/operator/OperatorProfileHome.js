@@ -1,15 +1,8 @@
 import React, { Component, Suspense } from 'react';
-import deleteIcon from '../../Images/delete-icon.png';
-import editIcon from '../../Images/edit-icon.png';
+// import deleteIcon from '../../Images/delete-icon.png';
+// import editIcon from '../../Images/edit-icon.png';
 
 import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import {
-// 	addMenuItem,
-// 	removeMenuItem,
-// 	addTruck,
-// 	removeTruck,
-// } from '../../actions/ownerActions';
 
 const mockStateData = {
 	operator: {
@@ -115,14 +108,14 @@ class OperatorProfileHome extends Component {
 								<h3>Departure Time: {truck.departureTime}</h3>
 								<div className="icons">
 									<Link to="/edittruck">
-										<img src={editIcon} alt="edit icon" className="edit-icon" />
+										{/* <img src={editIcon} alt="edit icon" className="edit-icon" /> */}
 									</Link>
-									<img
+									{/* <img
 										src={deleteIcon}
 										alt="delete icon"
 										className="delete-icon"
 										// onClick={removeTruck}
-									/>
+									/> */}
 								</div>
 							</div>
 						);
@@ -132,21 +125,5 @@ class OperatorProfileHome extends Component {
 		);
 	}
 }
-
-// const mapStateToProps = (state) => {
-// 	return {
-// 		isFetching: state.isFetching,
-// 		error: state.error,
-// 		operator: state.operator,
-// 	};
-// };
-
-// export default connect(
-// 	mapStateToProps,
-// 	addTruck,
-// 	removeTruck,
-// 	addMenuItem,
-// 	removeMenuItem
-// )(OperatorProfileHome);
 
 export default OperatorProfileHome;

@@ -1,8 +1,8 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-export const FETCHING_OWNERS_START = 'FETCHING_OWNERS_START';
-export const FETCHING_OWNERS_SUCCESS = 'FETCHING_OWNERS_SUCCESS';
-export const FETCHING_OWNERS_FAIL = 'FETCHING_OWNERS_FAIL';
+export const FETCHING_OPERATOR_START = 'FETCHING_OPERATOR_START';
+export const FETCHING_OPERATOR_SUCCESS = 'FETCHING_OPERATORS_SUCCESS';
+export const FETCHING_OPERATOR_FAIL = 'FETCHING_OPERATOR_FAIL';
 export const SET_OWNER_INFO = 'SET_OWNER_INFO';
 export const FETCHING_TRUCKS_START = 'FETCHING_TRUCKS_START';
 export const FETCHING_TRUCKS_SUCCESS = 'FETCHING_TRUCKS_SUCCESS';
@@ -16,14 +16,14 @@ export const REMOVE_MENUITEM = 'REMOVE_MENUITEM';
 
 // This function will fetch truck owner info from DB
 export const fetchOwnerData = (id) => (dispatch) => {
-	dispatch({ type: FETCHING_OWNERS_START });
+	dispatch({ type: FETCHING_OPERATOR_START });
 
 	axiosWithAuth()
-		.get(`/api/owners/${id}`)
+		.get(`/api/operator/${id}`)
 		.then((res) => {
 			console.log('pl: actions.js: fetchOwnerData: axios get: results: ', res);
 			dispatch({
-				type: FETCHING_OWNERS_SUCCESS,
+				type: FETCHING_OPERATOR_SUCCESS,
 				payload: res.data,
 			});
 		})
@@ -32,7 +32,7 @@ export const fetchOwnerData = (id) => (dispatch) => {
 				'pl: actions.js: fetchOwnerData: axios get failure: res: ',
 				err.message
 			);
-			dispatch({ type: FETCHING_OWNERS_FAIL, payload: err.message });
+			dispatch({ type: FETCHING_OPERATOR_FAIL, payload: err.message });
 		});
 };
 

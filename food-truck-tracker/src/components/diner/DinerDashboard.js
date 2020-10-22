@@ -43,16 +43,16 @@ export const DinerDashboard = ({
 	}, [fetchTruckData, fetchDinerInfo]);
 
 	useEffect(() => {
-		if (dinerInfo.visible) {
+		if (infoWindow.visible) {
 			let temp = props.trucks.filter((truck) => {
-				return truck.id === dinerInfo.currentTruck.id;
+				return truck.id === infoWindow.currentTruck.id;
 			});
-			setDinerInfo({
-				...dinerInfo,
+			setInfoWindow({
+				...infoWindow,
 				currentTruck: temp[0],
 			});
 		}
-	}, [props.trucks, dinerInfo]);
+	}, [props.trucks, infoWindow]);
 
 	const RecenterMap = (location) => {
 		setMapCenter(location);
@@ -72,7 +72,7 @@ export const DinerDashboard = ({
 				destination={destination}
 				setDestination={setDestination}
 				trucks={props.trucks}
-				dinerInfo={props.dinerInfo}
+				infoWindow={props.infoWindow}
 				milesRadius={milesRadius}
 				setMilesRadius={setMilesRadius}
 				RecenterMap={RecenterMap}
@@ -87,7 +87,7 @@ export const DinerDashboard = ({
 				setInfoWindow={setInfoWindow}
 				destination={destination}
 				trucks={props.trucks}
-				dinerInfo={props.dinerInfo}
+				infoWindow={props.infoWindow}
 				milesRadius={milesRadius}
 				mapCenter={mapCenter}
 				setMapCenter={setMapCenter}
@@ -100,7 +100,7 @@ export const DinerDashboard = ({
 
 const mapStateToProps = (state) => {
 	return {
-		dinerInfo: state.dinerInfo,
+		infoWindow: state.infoWindow,
 		trucks: state.trucks,
 	};
 };
