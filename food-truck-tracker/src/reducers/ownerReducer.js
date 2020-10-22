@@ -12,7 +12,9 @@ import {
 const initialState = {
 	isFetching: false,
 	error: '',
-	operator: {
+	ownerInfo: {
+		// ownerInfo might be different based on user designation as diner or owner...
+		ownerId: localStorage.getItem('ownerId'), // may not need a separate designation at all, maybe just userId
 		username: '',
 		id: 0,
 		email: '',

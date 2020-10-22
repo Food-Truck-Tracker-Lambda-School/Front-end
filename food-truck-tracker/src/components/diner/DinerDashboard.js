@@ -28,7 +28,7 @@ export const DinerDashboard = ({
 			customerRating: [0, 0, 0, 0],
 			avgRating: 0,
 			menu: [],
-			currentLocation: ''
+			currentLocation: '',
 		},
 	});
 
@@ -43,16 +43,16 @@ export const DinerDashboard = ({
 	}, [fetchTruckData, fetchDinerInfo]);
 
 	useEffect(() => {
-		if (infoWindow.visible) {
+		if (dinerInfo.visible) {
 			let temp = props.trucks.filter((truck) => {
-				return truck.id === infoWindow.currentTruck.id;
+				return truck.id === dinerInfo.currentTruck.id;
 			});
-			setInfoWindow({
-				...infoWindow,
+			setDinerInfo({
+				...dinerInfo,
 				currentTruck: temp[0],
 			});
 		}
-	}, [props.trucks, infoWindow]);
+	}, [props.trucks, dinerInfo]);
 
 	const RecenterMap = (location) => {
 		setMapCenter(location);

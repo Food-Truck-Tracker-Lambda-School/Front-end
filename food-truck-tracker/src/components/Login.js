@@ -2,24 +2,40 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components';
-import backImg from '../Images/backGround.png';
+import backImg from '../Images/LOGO Light Mode.jpg';
 import { useHistory } from 'react-router-dom';
+
+const LogoImg = styled.div``;
 
 const ErrorP = styled.p`
 	font-size: 1.2rem;
 	color: red;
 `;
 
+const ContDiv = styled.div`
+	display: flex;
+	flex-direction: row-reversed;
+	@media (max-width: 1380px) {
+		flex-direction: column;
+		margin: 5% 15% 30% 20%;
+		height: 20vh;
+	}
+`;
+
 const LogDiv = styled.form`
-	width: 400px;
-	background: #a10c00;
+	height: 15vh;
+	background: #f97f0a;
 	color: white;
 	padding: 2%;
-	position: fixed;
-	margin: 2% 15% 15% 30%;
 	border-radius: 10px;
-	overflow: hidden;
-	z-index: 2;
+	width: 300px;
+`;
+
+const ContLogDiv = styled.div`
+	width: 50vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 const Login = () => {
