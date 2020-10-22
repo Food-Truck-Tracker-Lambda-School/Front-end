@@ -127,7 +127,7 @@ const Registration = () => {
     axiosWithAuth()
       .post("/api/auth/register", postState)
       .then((response) => {
-        history.push("/dashboard");
+        localStorage.setItem('roleId', response.data.roleId)
         console.log("Data Response", response.data);
         setFormState({
           roleId: "",
@@ -138,8 +138,10 @@ const Registration = () => {
           password: "",
           terms: false,
         });
+        history.push("/dashboard");
       })
       .catch((err) => {
+        debugger
         const { message } = err.response.data;
         console.log("error data--->", message);
         alert("Username already exists. Please choose another");
