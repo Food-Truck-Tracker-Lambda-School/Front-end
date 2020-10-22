@@ -6,8 +6,8 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
 const ErrorP = styled.p`
-  font-size: 1.2rem;
-  color: red;
+	font-size: 1.2rem;
+	color: red;
 `;
 
 const ContDiv = styled.div`
