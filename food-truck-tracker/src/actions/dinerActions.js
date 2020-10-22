@@ -31,7 +31,7 @@ export const fetchDinerInfo = (id) => (dispatch) => {
 			});
 		})
 		.catch((err) => {
-			console.FAIL(err.message);
+			console.error(err.message);
 			dispatch({
 				type: FETCHING_DINER_INFO_FAIL,
 				payload: err.data,
@@ -115,28 +115,27 @@ export const deleteFavoriteTruck = (id, truckId) => (dispatch) => {
 		});
 };
 
-export const getRatings = (id) => (dispatch) => {
+
+export const getRatings = (truckId) => (dispatch) => {
 	axiosWithAuth()
-		.get(`/api/diner/${id}/ratings`)
+		.get(`/api/trucks/${truckId}/ratings`)
 		.then((res) => {
-			console.log('pl: dinerActions.js: getRatings: axios get: res: ', res)
+			console.log('pl: dinerActions.js: getRatings: axios get: res: ', res);
 			dispatch({
 				type: FETCH_RATINGS_SUCCESS,
-				payload: res.data
-			})
-		}) 
+				payload: res.data,
+			});
+		})
 		.catch((err) => {
 			dispatch({
 				type: FETCH_RATINGS_FAIL,
-				payload: err.message
-			})
-		})
-}
+				payload: err.message,
+			});
+		});
+};
 
 // Allows user to add a rating to the selected truck
-export const addTruckRating = (truckId, id, customerRating) => (
-	dispatch
-) => {
+export const addTruckRating = (truckId, id, customerRating) => (dispatch) => {
 	axiosWithAuth()
 		.post(`/api/diner/${id}/ratings`, {
 			customerRating: customerRating,
@@ -157,12 +156,12 @@ export const addTruckRating = (truckId, id, customerRating) => (
 };
 
 // Allows user to rate items on the truck's menu
-export const addMenuRating = (truckId, menuItemId, dinerId, customerRating) => (
+export const addMenuRating = (truckId, customerRating) => (
 	dispatch
 ) => {
 	axiosWithAuth()
 		.post(
-			`/api/trucks/${truckId}/menu/${menuItemId}/customerRatings/${dinerId}`,
+			`/api/trucks/${truckId}/ratings`,
 			{
 				customerRating: customerRating,
 			}
