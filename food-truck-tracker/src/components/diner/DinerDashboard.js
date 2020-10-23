@@ -1,62 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import MapContainer from './MapContainer';
-import SideBar from './SideBar';
-import ClearRoute from './ClearRoute';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import MapContainer from "./MapContainer";
+import SideBar from "./SideBar";
+import ClearRoute from "./ClearRoute";
 
 import {
-	fetchTruckData as ftd,
-	fetchDinerInfo as fdi,
-	addFavoriteTruck,
-	deleteFavoriteTruck,
-	addTruckRating,
-	addMenuRating,
-} from '../../actions/dinerActions';
+  fetchTruckData as ftd,
+  fetchDinerInfo as fdi,
+  addFavoriteTruck,
+  deleteFavoriteTruck,
+  addTruckRating,
+  addMenuRating,
+} from "../../actions/dinerActions";
 
 export const DinerDashboard = ({
-	fetchTruckData,
-	fetchDinerInfo,
-	...props
+  fetchTruckData,
+  fetchDinerInfo,
+  ...props
 }) => {
-	const [infoWindow, setInfoWindow] = useState({
-		visible: false,
-		position: {},
-		currentTruck: {
-			truckName: '',
-			truckImg: '',
-			cuisine: '',
-			customerRating: [0, 0, 0, 0],
-			avgRating: 0,
-			menu: [],
-			currentLocation: '',
-		},
-	});
+  const [infoWindow, setInfoWindow] = useState({
+    visible: false,
+    position: {},
+    currentTruck: {
+      truckName: "",
+      truckImg: "",
+      cuisine: "",
+      customerRating: [0, 0, 0, 0],
+      avgRating: 0,
+      menu: [],
+      currentLocation: "",
+    },
+  });
 
-	const [destination, setDestination] = useState(null);
-	const [milesRadius, setMilesRadius] = useState(1);
-	const [mapCenter, setMapCenter] = useState({});
-	const [myLocation, setMyLocation] = useState('');
+  const [destination, setDestination] = useState(null);
+  const [milesRadius, setMilesRadius] = useState(1);
+  const [mapCenter, setMapCenter] = useState({});
+  const [myLocation, setMyLocation] = useState("");
 
-	useEffect(() => {
-		fetchTruckData();
-		fetchDinerInfo(localStorage.getItem('roleId'));
-	}, [fetchTruckData, fetchDinerInfo]);
+  useEffect(() => {
+    fetchTruckData();
+    fetchDinerInfo(localStorage.getItem("roleId"));
+  }, [fetchTruckData, fetchDinerInfo]);
 
-	useEffect(() => {
-		if (infoWindow.visible) {
-			let temp = props.trucks.filter((truck) => {
-				return truck.id === infoWindow.currentTruck.id;
-			});
-			setInfoWindow({
-				...infoWindow,
-				currentTruck: temp[0],
-			});
-		}
-	}, [props.trucks, infoWindow]);
+  useEffect(() => {
+    if (infoWindow.visible) {
+      let temp = props.trucks.filter((truck) => {
+        return truck.id === infoWindow.currentTruck.id;
+      });
+      setInfoWindow({
+        ...infoWindow,
+        currentTruck: temp[0],
+      });
+    }
+  }, [props.trucks, infoWindow]);
 
-	const RecenterMap = (location) => {
-		setMapCenter(location);
-	};
+  const RecenterMap = (location) => {
+    setMapCenter(location);
+  };
 
 	return (
 		<>
@@ -98,17 +98,17 @@ export const DinerDashboard = ({
 };
 
 const mapStateToProps = (state) => {
-	return {
-		infoWindow: state.infoWindow,
-		trucks: state.trucks,
-	};
+  return {
+    infoWindow: state.infoWindow,
+    trucks: state.trucks,
+  };
 };
 
 export default connect(mapStateToProps, {
-	fetchTruckData: ftd,
-	fetchDinerInfo: fdi,
-	addFavoriteTruck,
-	deleteFavoriteTruck,
-	addTruckRating,
-	addMenuRating,
+  fetchTruckData: ftd,
+  fetchDinerInfo: fdi,
+  addFavoriteTruck,
+  deleteFavoriteTruck,
+  addTruckRating,
+  addMenuRating,
 })(DinerDashboard);

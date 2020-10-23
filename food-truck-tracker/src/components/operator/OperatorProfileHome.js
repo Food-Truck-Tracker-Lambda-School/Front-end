@@ -101,7 +101,7 @@ class OperatorProfileHome extends Component {
 
 						return (
 							<div className="truck-card">
-								<img src={truck.imageUrl} className="truck-img" />
+								<img src={truck.imageUrl}  alt="food-truck" className="truck-img" />
 								<h3>Location: {truck.currentLocation}</h3>
 								<h3>Cuisine: {truck.cuisine} </h3>
 								<h3>Avg. Rating: {avgRating.toFixed(1)} </h3>
