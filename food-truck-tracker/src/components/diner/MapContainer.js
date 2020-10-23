@@ -20,11 +20,11 @@ import {
 
 import StarRateIcon from '@material-ui/icons/StarRate';
 
-const mapStyle = {
+const mapStyle = styled.div`
 	width: '100%',
 	height: '100%',
 	marginTop: '-1rem',
-};
+`;
 
 function MapContainer(props) {
 	const circleRef = useRef();
@@ -38,7 +38,7 @@ function MapContainer(props) {
 		new props.google.maps.DirectionsService()
 	);
 
-	const [, setMapReference] = useState(null);
+	const [setMapReference] = useState(null);
 
 	const [mapCenter, setMapCenter] = useState(false);
 
@@ -99,7 +99,7 @@ function MapContainer(props) {
 		}
 	}, [props.destination, directionsRenderer, directionsService, props.myLocation]);
 
-	const setDirectionsRenderer = (mapProps, map) => {
+	const setDirectionsRenderer = (map) => {
 		setMapReference(map);
 		directionsRenderer.setMap(map);
 	};
@@ -141,13 +141,14 @@ function MapContainer(props) {
 					return (
 						<Marker
 							key={index}
-							name={'current Location'}
+							name={'Current Location'}
 							position={{ lat: coords[0], lng: coords[1] }}
 							data_truck={t}
 							onClick={handleClickMarker}
 						/>
 					);
 				}
+				return t;
 			})}
 
 			<InfoWindow
