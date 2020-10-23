@@ -141,13 +141,14 @@ function MapContainer(props) {
 					return (
 						<Marker
 							key={index}
-							name={'current Location'}
+							name={'Current Location'}
 							position={{ lat: coords[0], lng: coords[1] }}
 							data_truck={t}
 							onClick={handleClickMarker}
 						/>
 					);
 				}
+				return t;
 			})}
 
 			<InfoWindow
