@@ -38,7 +38,7 @@ function MapContainer(props) {
 		new props.google.maps.DirectionsService()
 	);
 
-	const [mapReference, setMapReference] = useState(null);
+	const [, setMapReference] = useState(null);
 
 	const [mapCenter, setMapCenter] = useState(false);
 
@@ -97,7 +97,7 @@ function MapContainer(props) {
 		} else {
 			directionsRenderer.setDirections({ routes: [] });
 		}
-	}, [props.destination]);
+	}, [props.destination, directionsRenderer, directionsService, props.myLocation]);
 
 	const setDirectionsRenderer = (mapProps, map) => {
 		setMapReference(map);

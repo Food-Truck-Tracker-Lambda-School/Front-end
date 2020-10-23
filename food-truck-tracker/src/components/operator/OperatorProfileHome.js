@@ -1,8 +1,8 @@
-import React, { Component, Suspense } from 'react';
+import React, { Component } from 'react';
 // import deleteIcon from '../../Images/delete-icon.png';
 // import editIcon from '../../Images/edit-icon.png';
 
-import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const mockStateData = {
 	operator: {
@@ -101,7 +101,7 @@ class OperatorProfileHome extends Component {
 
 						return (
 							<div className="truck-card">
-								<img src={truck.imageUrl} className="truck-img" />
+								<img src={truck.imageUrl}  alt="food-truck" className="truck-img" />
 								<h3>Location: {truck.currentLocation}</h3>
 								<h3>Cuisine: {truck.cuisine} </h3>
 								<h3>Avg. Rating: {avgRating.toFixed(1)} </h3>
