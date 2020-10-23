@@ -6,7 +6,9 @@ import {
 	InfoWindow,
 	Circle,
 } from 'google-maps-react';
+
 import { mapStyles } from '../../utils/mapStyles';
+import styled from 'styled-components';
 
 import {
 	GridList,
