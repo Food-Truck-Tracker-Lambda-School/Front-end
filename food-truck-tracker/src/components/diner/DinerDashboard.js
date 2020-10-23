@@ -87,7 +87,6 @@ export const DinerDashboard = ({
 				setInfoWindow={setInfoWindow}
 				destination={destination}
 				trucks={props.trucks}
-				infoWindow={props.infoWindow}
 				milesRadius={milesRadius}
 				mapCenter={mapCenter}
 				setMapCenter={setMapCenter}

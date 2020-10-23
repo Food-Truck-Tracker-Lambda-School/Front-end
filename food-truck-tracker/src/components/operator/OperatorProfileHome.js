@@ -1,8 +1,8 @@
-import React, { Component, Suspense } from 'react';
+import React, { Component } from 'react';
 // import deleteIcon from '../../Images/delete-icon.png';
 // import editIcon from '../../Images/edit-icon.png';
 
-import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const mockStateData = {
 	operator: {

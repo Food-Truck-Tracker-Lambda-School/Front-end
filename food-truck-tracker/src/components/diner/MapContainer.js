@@ -20,11 +20,11 @@ import {
 
 import StarRateIcon from '@material-ui/icons/StarRate';
 
-const mapStyle = {
+const mapStyle = styled.div`
 	width: '100%',
 	height: '100%',
 	marginTop: '-1rem',
-};
+`;
 
 function MapContainer(props) {
 	const circleRef = useRef();
@@ -38,7 +38,7 @@ function MapContainer(props) {
 		new props.google.maps.DirectionsService()
 	);
 
-	const [mapReference, setMapReference] = useState(null);
+	const [setMapReference] = useState(null);
 
 	const [mapCenter, setMapCenter] = useState(false);
 
@@ -97,9 +97,9 @@ function MapContainer(props) {
 		} else {
 			directionsRenderer.setDirections({ routes: [] });
 		}
-	}, [props.destination]);
+	}, []);
 
-	const setDirectionsRenderer = (mapProps, map) => {
+	const setDirectionsRenderer = (map) => {
 		setMapReference(map);
 		directionsRenderer.setMap(map);
 	};
