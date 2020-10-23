@@ -20,7 +20,7 @@ const NavigationDiv = styled.div`
 const Navigation = () => {
     return (
         <NavigationDiv>
-            <a href='https://bw2awesomefoodtrucktrackermarketing.netlify.app/'>Home Page</a> <br/>
+            <a href='https://bw2foodtrucktrackermarketing.netlify.app/'>Home Page</a> <br/>
             <Link to='/registration'>New User - Register Here</Link> <br/>
             <Link to='/login'>Returning Users</Link>
         </NavigationDiv>

@@ -99,7 +99,7 @@ function MapContainer(props) {
 		} else {
 			directionsRenderer.setDirections({ routes: [] });
 		}
-	}, []);
+	}, [props.destination, directionsRenderer, directionsService, props.myLocation]);
 
 	const setDirectionsRenderer = (map) => {
 		setMapReference(map);
