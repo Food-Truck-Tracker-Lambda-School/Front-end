@@ -58,43 +58,42 @@ export const DinerDashboard = ({
     setMapCenter(location);
   };
 
-	return (
-		<>
-			<ClearRoute
-				destination={destination}
-				setDestination={setDestination}
-				RecenterMap={RecenterMap}
-				myLocation={myLocation}
-			/>
-			<SideBar
-				infoWindow={infoWindow}
-				setInfoWindow={setInfoWindow}
-				destination={destination}
-				setDestination={setDestination}
-				trucks={props.trucks}
-				infoWindow={props.infoWindow}
-				milesRadius={milesRadius}
-				setMilesRadius={setMilesRadius}
-				RecenterMap={RecenterMap}
-				myLocation={myLocation}
-				addFavoriteTruck={props.addFavoriteTruck}
-				deleteFavoriteTruck={props.deleteFavoriteTruck}
-				addTruckRating={props.addTruckRating}
-				addMenuRating={props.addMenuRating}
-			/>
-			<MapContainer
-				infoWindow={infoWindow}
-				setInfoWindow={setInfoWindow}
-				destination={destination}
-				trucks={props.trucks}
-				milesRadius={milesRadius}
-				mapCenter={mapCenter}
-				setMapCenter={setMapCenter}
-				myLocation={myLocation}
-				setMyLocation={setMyLocation}
-			/>
-		</>
-	);
+  return (
+    <>
+      <ClearRoute
+        destination={destination}
+        setDestination={setDestination}
+        RecenterMap={RecenterMap}
+        myLocation={myLocation}
+      />
+      <SideBar
+        infoWindow={infoWindow}
+        setInfoWindow={setInfoWindow}
+        destination={destination}
+        setDestination={setDestination}
+        trucks={props.trucks}
+        milesRadius={milesRadius}
+        setMilesRadius={setMilesRadius}
+        RecenterMap={RecenterMap}
+        myLocation={myLocation}
+        addFavoriteTruck={props.addFavoriteTruck}
+        deleteFavoriteTruck={props.deleteFavoriteTruck}
+        addTruckRating={props.addTruckRating}
+        addMenuRating={props.addMenuRating}
+      />
+      <MapContainer
+        infoWindow={infoWindow}
+        setInfoWindow={setInfoWindow}
+        destination={destination}
+        trucks={props.trucks}
+        milesRadius={milesRadius}
+        mapCenter={mapCenter}
+        setMapCenter={setMapCenter}
+        myLocation={myLocation}
+        setMyLocation={setMyLocation}
+      />
+    </>
+  );
 };
 
 const mapStateToProps = (state) => {
